@@ -1,0 +1,15 @@
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "contains",
+          "property": "text",
+          "value": "123"
+        }
+      ],
+      "logicalOperator": "and"
+    }
+  ],
+  "logicalOperator": "and"
+}

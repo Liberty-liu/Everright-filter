@@ -1,0 +1,42 @@
+@include b(DateComponent) {
+  @include e(manuals) {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 8px;
+    padding: 10px 0;
+  }
+  @include e(shortcuts) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    &>* {
+      width: 118px;
+      margin: 10px 9px !important;
+    }
+    @include when(active) {
+    }
+  }
+  @include e(absolute) {
+    border-top: 1px solid #E9E9E9;
+    text-align: center;
+    padding: 20px 0 10px;
+    margin: 0 8px;
+  }
+  @include e(includeToday) {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  @include e(button) {
+    .el-icon {
+      padding-left: 10px;
+    }
+  }
+  @include e(width) {
+    display: flex !important;
+    flex-grow: 0;
+    width: map.get($component-width, 'value') !important;
+    box-sizing: border-box;
+    flex-shrink: 0;
+  }
+}

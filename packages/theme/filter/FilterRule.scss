@@ -1,0 +1,6 @@
+@include b(FilterRule) {
+  padding: 10px 10px 10px 0;
+  @include e(border) {
+    border-bottom: 1px dashed #E0E0E0;
+  }
+}

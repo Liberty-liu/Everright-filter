@@ -1,0 +1,10 @@
+@include b(DateType) {
+  @include e(width) {
+    width: calc(map.get($component-width, 'value') / 3) !important;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    &>.select-trigger {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@include b(ConstraintComponent) {
+  padding-top: 10px;
+  @include e(contentLabel){
+    margin:0 20px 0 24px;
+    font-size: 14px;
+  }
+  @include e(content){
+    &>div{
+      align-items: baseline;;
+      display: flex;
+      padding: 10px 0;
+    }
+  }
+  @include e(item){
+    display: flex;
+    &>* {
+      margin-right: 15px;
+    }
+  }
+  .#{$namespace}-FilterItem {
+    padding: 0 0 50px 0;
+    margin: 0;
+  }
+  .#{$namespace}-FilterRule {
+    padding: 6px 10px 4px 0;
+  }
+}

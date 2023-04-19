@@ -1,0 +1,6 @@
+@include b(NumberType) {
+  @include e(width) {
+    width: map.get($component-width, 'value');
+    flex-shrink: 0;
+  }
+}

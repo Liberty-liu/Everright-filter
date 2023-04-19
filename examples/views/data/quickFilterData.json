@@ -1,0 +1,150 @@
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "equal",
+          "property": "cascader01",
+          "value": "any"
+        },
+        {
+          "operator": "equal",
+          "property": "cascader02",
+          "value": [
+            "name"
+          ]
+        },
+        {
+          "operator": "equal",
+          "property": "Gender",
+          "value": [
+            "0"
+          ]
+        },
+        {
+          "operator": "equal",
+          "property": "Gender11111",
+          "value": "1"
+        },
+        {
+          "operator": "equal",
+          "property": "Region",
+          "value": [
+            "310000"
+          ]
+        },
+        {
+          "operator": "equal",
+          "property": "text",
+          "value": "阿萨德开发计划"
+        },
+        {
+          "operator": "equal",
+          "property": "rating",
+          "value": 123123
+        },
+        {
+          "operator": "between",
+          "property": "rating1",
+          "value": [
+            1,
+            3000
+          ]
+        },
+        {
+          "operator": "equal",
+          "property": "time0",
+          "value": "12:40"
+        },
+        {
+          "operator": "equal",
+          "property": "time1",
+          "value": "12:40:02"
+        },
+        {
+          "operator": "equal",
+          "property": "Date0",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "dynamic",
+            "dateFrom": "- 1 weeks",
+            "dateTo": "- 1 weeks"
+          }
+        },
+        {
+          "operator": "equal",
+          "property": "Date1",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "dynamic",
+            "dateFrom": "+ 0 days",
+            "dateTo": "+ 20 days"
+          }
+        },
+        {
+          "operator": "equal",
+          "property": "Date2",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "static",
+            "value": "1679500800"
+          }
+        },
+        {
+          "operator": "equal",
+          "property": "Date3",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "dynamic",
+            "dateFrom": "- 20 days",
+            "dateTo": "- 1 days"
+          }
+        },
+        {
+          "operator": "not_equal",
+          "property": "Date4",
+          "dateOperator": "year",
+          "value": 2023
+        },
+        {
+          "operator": "between",
+          "property": "Date5",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1678291200",
+              "1679673600"
+            ]
+          }
+        },
+        {
+          "operator": "between",
+          "property": "Date6",
+          "dateOperator": "year",
+          "value": [
+            2019,
+            2023
+          ]
+        },
+        {
+          "operator": "equal",
+          "property": "Date7",
+          "dateOperator": "month",
+          "value": 2
+        },
+        {
+          "operator": "between",
+          "property": "Date8",
+          "dateOperator": "month",
+          "value": [
+            4,
+            11
+          ]
+        }
+      ],
+      "logicalOperator": "and"
+    }
+  ],
+  "logicalOperator": "and"
+}

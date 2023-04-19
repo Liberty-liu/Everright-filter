@@ -1,0 +1,88 @@
+@include b(Main) {
+  padding: 50px;
+  .EverrightFilterOption {
+    display: flex;
+    .EverrightFilterOptionContent {
+      width: 100%;
+    }
+  }
+  @include e(add) {
+    width: 100%;
+    height: 76px !important;
+    z-index: 1;
+    background: #f9f9f9 !important;
+    border: #f9f9f9;
+    color: black;
+  }
+  @include e(quick-search) {
+    padding: 0;
+    .Everright-filter-FilterItem {
+      padding: 0;
+      background: none;
+      margin: 0;
+    }
+    .Everright-filter-PickerComponent > * {
+      margin: 0;
+    }
+    .Everright-filter-TriggerComponent {
+      width: 120px;
+      margin-right: 0;
+      .el-input__wrapper {
+        border-radius: 4px 0px 0px 4px;
+        box-shadow: 1px 0 0 0 #dcdfe6 inset,0 1px 0 0 #dcdfe6 inset,0 -1px 0 0 #dcdfe6 inset;
+      }
+    }
+    .Everright-filter-TextType__width {
+      .el-input__wrapper {
+        border-radius: 0px;
+      }
+    }
+    .Everright-filter-PickerComponent__searchButton {
+      border-radius: 0px 4px 4px 0px;
+    }
+  }
+  @include e(quick-filter) {
+    .Everright-filter-FilterItem__optionContent.EverrightFilterOptionContent{
+      display: flex;
+    }
+    .Everright-filter-FilterItem__optionContent.EverrightFilterOptionContent {
+      flex-wrap: wrap;
+    }
+    .Everright-filter-FilterRule {
+      display: flex;
+    }
+    .Everright-filter-PickerComponent {
+      width: 100%;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      &>div:first-child{
+        margin-bottom: 10px;
+      }
+      &>*{
+        width: 100%;
+      }
+      &>.Everright-filter-DateComponent__button+*{
+        margin-top: 10px;
+      }
+      .Everright-filter-PickerComponent__componentWrap {
+        flex-wrap: wrap;
+        margin: 0;
+        width: 100%;
+        justify-content: space-between;
+        &>*:last-child:not(.is-range),&>.Everright-filter-DateComponent__button,.el-cascader{
+          width: 100% !important;
+        }
+        .Everright-filter-DateComponent__button+.Everright-filter-DateComponent__width {
+          margin-top: 10px;
+        }
+        .is-range {
+          width: 120px !important;
+        }
+      }
+    }
+    .Everright-filter-FilterRule {
+      width: 270px;
+      margin: 0 20px;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@include b(DayHourComponent) {
+  padding: 5px;
+  margin: 4px 9px !important;
+  background: #f9f9f9;
+  display: flex;
+  align-items: baseline;
+  @include e(content) {
+    display: flex;
+    align-items: center;
+  }
+  @include e([appendLabel, prependLabel]) {
+    margin: 5px;
+  }
+  @include e(wrap) {
+    margin: 5px;
+    position: relative;
+    width: 110px;
+    .el-input-number {
+      width: 100%;
+      .el-input__wrapper{
+        padding: 0 48px 0px 10px;
+      }
+    }
+  }
+  @include e(suffix) {
+    position: absolute;
+    font-size: 12px;
+    right: 12px;
+    top: 0;
+    //bottom: 0;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    &.el-select{
+      height: 28px;
+      width: 40px;
+      right: 1px;
+      top: 1px;
+      .el-input{
+        .el-input__wrapper{
+          box-shadow: none !important;
+          padding: 0;
+          .el-input__inner{
+            line-height: 28px;
+            height: 28px;
+            text-align: center;
+          }
+          .el-input__suffix{
+            margin-right: 4px;
+          }
+        }
+      }
+    }
+  }
+}

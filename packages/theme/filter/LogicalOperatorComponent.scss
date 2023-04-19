@@ -1,0 +1,17 @@
+@include b(LogicalOperatorComponent) {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  width: 70px;
+  &::before{
+    content: "";
+    position: absolute;
+    width: 160px;
+    left: 26px;
+    border: 1px solid #E9E9E9;
+    border-right-color: transparent;
+    top: 26px;
+    bottom: 26px;
+  }
+}

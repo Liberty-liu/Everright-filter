@@ -1,0 +1,6 @@
+@include b(OperatorComponent) {
+  @include e(width) {
+    width: map.get($component-width, 'operator');;
+    flex-shrink: 0;
+  }
+}

@@ -1,0 +1,9 @@
+@include b(SelectType) {
+  @include e(width) {
+    width: map.get($component-width, 'value');
+    flex-shrink: 0;
+    &>.select-trigger {
+      width: 100%;
+    }
+  }
+}

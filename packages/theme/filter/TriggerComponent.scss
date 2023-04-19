@@ -1,0 +1,4 @@
+@include b(TriggerComponent) {
+  width: map.get($component-width, 'trigger');
+  flex-shrink: 0;
+}
