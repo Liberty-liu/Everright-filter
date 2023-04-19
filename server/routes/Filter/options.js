@@ -5,6 +5,7 @@ export default (req, res) => {
       options: [
         {
           label: '属性',
+          en_label: '属性en',
           value: 'customer',
           children: [
             {
@@ -206,6 +207,7 @@ export default (req, res) => {
         Gender: [
           {
             label: '等于',
+            en_label: '等于en',
             value: 'equal',
             style: 'noop'
           },

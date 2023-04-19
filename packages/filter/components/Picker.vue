@@ -6,6 +6,7 @@ import NAME from '@ER/filter/name.js'
 import TriggerComponent from './Trigger.vue'
 import OperatorComponent from './Operator.vue'
 import types from '../types'
+import utils from '@ER/utils'
 export default {
   name: NAME.PICKERCOMPONENT
 }
@@ -67,7 +68,7 @@ const params = computed(() => {
   return result
 })
 const operatorOptions = computed(() => {
-  return ER.state.operators[!props.isConstraint ? unref(params).operatorKey : 'TimesOperators']
+  return utils.convertDataByLang(ER.state.operators[!props.isConstraint ? unref(params).operatorKey : 'TimesOperators'], lang.value)
 })
 const renderType = computed(() => {
   let result = ''

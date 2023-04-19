@@ -1,22 +1,29 @@
 import hooks from '@ER/hooks'
 import utils from '@ER/utils'
-export const useXhr = (httpPrams) => {
+const fn = (method, props, params, sendParams) => {
+  if (!props[method]) {
+    return hooks.useFetch(...sendParams)
+  } else {
+    return props[method](params)
+  }
+}
+export const useXhr = (props) => {
   return {
-    getOptions () {
-      return hooks.useFetch(...utils.apiParams('options', 'get', httpPrams))
+    getOptions (params) {
+      return fn('getOptions', props, params, utils.apiParams('options', 'get', props.httpPrams))
     },
     getConditions (params) {
-      return hooks.useFetch(...utils.apiParams('conditions', 'get', httpPrams, {
+      return fn('getConditions', props, params, utils.apiParams('conditions', 'get', props.httpPrams, {
         params
       }))
     },
     getProps (params) {
-      return hooks.useFetch(...utils.apiParams('props', 'get', httpPrams, {
+      return fn('getProps', props, params, utils.apiParams('props', 'get', props.httpPrams, {
         params
       }))
     },
     getPropValues (params) {
-      return hooks.useFetch(...utils.apiParams('propValues', 'get', httpPrams, {
+      return fn('getPropValues', props, params, utils.apiParams('propValues', 'get', props.httpPrams, {
         params
       }))
     }

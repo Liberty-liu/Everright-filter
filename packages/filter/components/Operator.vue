@@ -3,6 +3,7 @@ import { ref, computed, nextTick, reactive, inject, watch } from 'vue'
 import _ from 'lodash-es'
 import hooks from '@ER/hooks'
 import NAME from '@ER/filter/name.js'
+import utils from '@ER/utils'
 export default {
   name: NAME.OPERATORCOMPONENT
 }
@@ -19,6 +20,10 @@ const state = reactive({
 watch(state, () => {
   emit('update:modelValue', [state.value0, state.value1])
 })
+const {
+  t,
+  lang
+} = hooks.useI18n()
 watch(() => props.modelValue, (val, oldVal) => {
   state.value0 = val[0]
   state.value1 = val[1]
@@ -51,7 +56,7 @@ watch(() => props.modelValue, (val, oldVal) => {
     <el-option
       v-for="item in options[1]"
       :key="item.value"
-      :label="item.label"
+      :label="utils.getLableByLang(item, lang)"
       :value="item.value"
     />
   </el-select>

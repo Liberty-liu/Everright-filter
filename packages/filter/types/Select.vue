@@ -3,6 +3,7 @@ import { ref, computed, nextTick, reactive, inject, unref, watch, toRefs } from 
 import _ from 'lodash-es'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.SELECTTYPE
 }
@@ -44,6 +45,9 @@ const {
   ...toRefs(props),
   isMultiple
 })
+const newOptions = computed(() => {
+  return utils.convertDataByLang(state.options, lang.value)
+})
 const getRemoteData = async () => {
   const params = {
     property: props.property
@@ -77,7 +81,7 @@ defineExpose({
     collapse-tags
   >
     <el-option
-      v-for="item in state.options"
+      v-for="item in newOptions"
       :key="item.value"
       :label="item.label"
       :value="item.value"/>

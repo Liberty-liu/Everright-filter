@@ -31,13 +31,21 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  options: {
-    type: Object,
-    default () {}
-  },
   lang: {
     type: String,
     default: 'zh-cn'
+  },
+  getOptions: {
+    type: [Function, String]
+  },
+  getConditions: {
+    type: [Function, String]
+  },
+  getProps: {
+    type: [Function, String]
+  },
+  getPropValues: {
+    type: [Function, String]
   }
 })
 const {
@@ -73,7 +81,7 @@ const {
   props
 })
 const states = {}
-const api = useXhr(props.httpPrams)
+const api = useXhr(props)
 const readied = async.queue(function (task, callback) {
   states[String(task.name)] = {}
   task.fn.then(() => {
@@ -119,7 +127,7 @@ const flatNodes = (nodes) => {
 }
 const initConfiguration = () => {
   nextTick(async () => {
-    if (/^(linear|matrix|quick-search)$/.test(props.type)) {
+    if (/^(linear|matrix)$/.test(props.type)) {
       state.loading = false
       fireEvent('init', _.cloneDeep(state.options))
       return false
@@ -138,23 +146,22 @@ const initConfiguration = () => {
       await nextTick()
       fireEvent('init', _.cloneDeep(state.options))
     }
-    // console.log(state.options)
-    // console.log(flatNodes(state.options))
-    // console.log(123123)
+    if (props.type === 'quick-search') {
+      const pickers = state.children.filter(e => e.name === NAME.PICKERCOMPONENT)
+      const nodes = _.cloneDeep(flatNodes(state.options))
+      itemRef.value[0].addRule()
+      state.loading = false
+      await nextTick()
+      fireEvent('init', _.cloneDeep(state.options))
+    }
   })
 }
 const getRemoteData = async () => {
   state.loading = true
   try {
-    const isEmpty = _.isEmpty(props.options)
-    if (isEmpty) {
-      const response = await api.getOptions()
-      state.options = response.data.options
-      state.operators = response.data.operators
-    } else {
-      state.options = props.options.options
-      state.operators = props.options.operators
-    }
+    const response = await api.getOptions()
+    state.options = response.data.options
+    state.operators = response.data.operators
     initConfiguration()
   } catch (e) {
   }

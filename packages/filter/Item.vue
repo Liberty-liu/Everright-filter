@@ -34,7 +34,8 @@ const ruleRef = ref()
 const optionContentRef = ref()
 const state = reactive({
   logicalOperator: 'and',
-  rules: ER.props.type === 'quick-filter' ? [] : utils.generateItems(1)
+  // rules: ER.props.type === 'quick-filter' ? [] : utils.generateItems(1)
+  rules: /^(quick-search|quick-filter)$/.test(ER.props.type) ? [] : utils.generateItems(1)
 })
 const isShowOperator = computed(() => {
   return ER.props.type !== 'quick-filter' && state.rules.length > 1
@@ -114,7 +115,7 @@ const itemLabel = computed(() => {
           :class="[ns.e('add')]"
           @click="addRule"
           link
-        >{{isInConstraint ? t(`er.${NAME.FILTERITEM}.addProp`) : t(`er.${NAME.FILTERITEM}.addCondition1`)}}</el-button>
+        >{{isInConstraint ? t(`er.${NAME.FILTERITEM}.addProp`) : t(`er.${NAME.FILTERITEM}.addCondition`)}}</el-button>
       </div>
     </div>
   </div>

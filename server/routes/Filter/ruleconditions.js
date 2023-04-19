@@ -109,19 +109,16 @@ export default (req, res) => {
   } else {
     result = [
       {
-        zh_label: '未知',
         label: '未知',
         en_label: 'Unknown',
         value: '0'
       },
       {
-        zh_label: '男',
         label: '男',
         en_label: 'Male',
         value: '1'
       },
       {
-        zh_label: '女',
         label: '女',
         en_label: 'Female',
         value: '2'
