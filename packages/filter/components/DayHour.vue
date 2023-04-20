@@ -2,8 +2,9 @@
 import { ref, computed, nextTick, reactive, inject, defineExpose, defineComponent, watch } from 'vue'
 import _ from 'lodash-es'
 import hooks from '@ER/hooks'
+import NAME from '@ER/filter/name.js'
 export default {
-  name: 'DayHourComponent',
+  name: NAME.DayHourComponent,
   inheritAttrs: false
 }
 </script>
@@ -13,6 +14,10 @@ const props = defineProps(['modelValue', 'type', 'prependLabel', 'appendLabel', 
 const emit = defineEmits(['update:modelValue', 'change'])
 const ER = inject('Everright')
 const ns = hooks.useNamespace('DayHourComponent')
+const {
+  t,
+  lang
+} = hooks.useI18n()
 const state = reactive({
   visible: true,
   value0: null,
@@ -20,16 +25,18 @@ const state = reactive({
   value2: 1,
   value3: 1
 })
-const options = [
-  {
-    label: '天',
-    value: 1
-  },
-  {
-    label: '时',
-    value: 2
-  }
-]
+const options = computed(() => {
+  return [
+    {
+      label: t('er.public.days').slice(0, 1),
+      value: 1
+    },
+    {
+      label: t('er.public.hours').slice(0, 1),
+      value: 2
+    }
+  ]
+})
 const initialValue = (isRange) => {
   const result = {}
   if (isRange) {
@@ -103,8 +110,8 @@ const handleEvent = (type, val) => {
           :controls="false"
           @change="(val) => handleEvent('input', val)"
         />
-        <span v-if="type === 1" :class="[ns.e('suffix')]">天</span>
-        <span v-else-if="type === 2" :class="[ns.e('suffix')]">时</span>
+        <span v-if="type === 1" :class="[ns.e('suffix')]">{{ t('er.public.days') }}</span>
+        <span v-else-if="type === 2" :class="[ns.e('suffix')]">{{ t('er.public.hours') }}</span>
         <el-select
           v-else
           v-model="state.value2"
@@ -132,8 +139,8 @@ const handleEvent = (type, val) => {
            :controls="false"
            @change="(val) => handleEvent('input', val)"
          />
-         <span v-if="type === 1" :class="[ns.e('suffix')]">天</span>
-         <span v-else-if="type === 2" :class="[ns.e('suffix')]">时</span>
+         <span v-if="type === 1" :class="[ns.e('suffix')]">{{ t('er.public.days') }}</span>
+         <span v-else-if="type === 2" :class="[ns.e('suffix')]">{{ t('er.public.hours') }}</span>
          <el-select
            v-else
            v-model="state.value3"

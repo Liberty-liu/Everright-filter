@@ -24,6 +24,10 @@ const isRange = computed(() => {
   return props.operatorStyle === 'range'
 })
 const {
+  t,
+  lang
+} = hooks.useI18n()
+const {
   getData,
   setData,
   clearData,
@@ -52,6 +56,7 @@ defineExpose({
     :min="params.min"
     :step="params.step"
     :precision="params.precision"
+    :placeholder="t('er.public.TypeIn')"
     controls-position="right"/>
   <template v-if="isRange">
     <div>-</div>
@@ -62,6 +67,7 @@ defineExpose({
       :max="params.max"
       :min="params.min"
       :step="params.step"
+      :placeholder="t('er.public.TypeIn')"
       :precision="params.precision"
       controls-position="right"/>
   </template>

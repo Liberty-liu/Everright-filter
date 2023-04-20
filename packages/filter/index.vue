@@ -120,8 +120,8 @@ const flatNodes = (nodes) => {
 const initConfiguration = () => {
   nextTick(async () => {
     if (/^(linear|matrix|quick-search)$/.test(props.type)) {
-      fireEvent('init', _.cloneDeep(state.options))
       state.loading = false
+      fireEvent('init', _.cloneDeep(state.options))
       return false
     }
     if (props.type === 'quick-filter') {
@@ -196,6 +196,7 @@ defineExpose({
   getData,
   setData: (...arg) => {
     canFire = false
+    state.loading = true
     setData(...arg)
   },
   pushData,
@@ -209,7 +210,7 @@ const addItem = () => {
   state.store.filters.push(...utils.generateItems(1))
 }
 const addGroupLabel = computed(() => {
-  return `${t('er.Main.addGroupLabel')} ${lang.value === 'zh-cn' ? utils.digitalToChinese(state.store.filters.length + 1) : utils.digitalToEnglish(state.store.filters.length + 1)}`
+  return `${t(`er.${NAME.EVERRIGHTFILTER}.addGroupLabel`)} ${lang.value === 'zh-cn' ? utils.digitalToChinese(state.store.filters.length + 1) : utils.digitalToEnglish(state.store.filters.length + 1)}`
 })
 </script>
 <template>

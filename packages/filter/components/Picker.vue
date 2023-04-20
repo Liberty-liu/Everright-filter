@@ -98,24 +98,26 @@ const isShowComponent = computed(() => {
   }
   return result
 })
-const dateOperatorOptions = [
-  {
-    value: 'date',
-    label: '日期'
-  },
-  {
-    value: 'year',
-    label: '年'
-  },
-  {
-    value: 'month',
-    label: '月'
-  },
-  {
-    value: 'day',
-    label: '日'
-  }
-]
+const dateOperatorOptions = computed(() => {
+  return [
+    {
+      value: 'date',
+      label: t('er.public.Date')
+    },
+    {
+      value: 'year',
+      label: t('er.public.year')
+    },
+    {
+      value: 'month',
+      label: t('er.public.month')
+    },
+    {
+      value: 'day',
+      label: t('er.public.day')
+    }
+  ]
+})
 const isShowDel = computed(() => {
   return (ER.state.store.filters.length > 1 ? true : (props.parent.length > 1 ? true : !_.isEmpty(state.property))) && !/^quick-(search|filter)$/.test(ER.props.type)
 })
@@ -135,7 +137,7 @@ const operatorComponentData = computed(() => {
   const includeDateOperator = _.get(unref(params), 'includeOperator.dateOperator', [])
   const includeOperator = _.get(unref(params), 'includeOperator.operator', [])
   return [
-    dateOperatorOptions.filter((e) => {
+    dateOperatorOptions.value.filter((e) => {
       return includeDateOperator.length === 0 ? exDateOperator.indexOf(e.value) === -1 : includeDateOperator.indexOf(e.value) !== -1
     }),
     unref(operatorOptions).filter((e) => {

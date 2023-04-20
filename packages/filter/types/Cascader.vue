@@ -12,6 +12,10 @@ const ERConstraint = inject('EverrightConstraint', '')
 const isInConstraint = !!ERConstraint
 const props = defineProps(['id', 'operatorStyle', 'params', 'property'])
 const ER = inject('Everright')
+const {
+  t,
+  lang
+} = hooks.useI18n()
 const element = ref()
 const ns = hooks.useNamespace(NAME.CASCADERTYPE)
 const state = reactive({
@@ -105,6 +109,7 @@ const handleChange = (value) => {
     v-loading="state.loading">
     <el-cascader
       clearable
+      :placeholder="t('er.public.select')"
       v-if="state.isChanged"
       :class="[ns.b(), ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
       filterable

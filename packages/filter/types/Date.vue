@@ -41,6 +41,10 @@ const {
   ...toRefs(props),
   isRange
 })
+const {
+  t,
+  lang
+} = hooks.useI18n()
 defineExpose({
   getData,
   setData,
@@ -74,6 +78,7 @@ const options0 = computed(() => {
   </template>
   <template v-else>
     <el-select
+      :placeholder="t('er.public.select')"
       v-if="state.isChanged"
       :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
       v-model="state.value0"
@@ -87,8 +92,9 @@ const options0 = computed(() => {
         :value="item.value"/>
     </el-select>
     <template v-if="isRange">
-      <span>至</span>
+      <span>-</span>
       <el-select
+        :placeholder="t('er.public.select')"
         :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
         v-if="state.isChanged"
         v-model="state.value1"

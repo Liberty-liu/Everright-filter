@@ -14,6 +14,10 @@ export default {
 const props = defineProps(['params', 'id'])
 const emit = defineEmits(['update:modelValue'])
 const ER = inject('Everright')
+const {
+  t,
+  lang
+} = hooks.useI18n()
 const ns = hooks.useNamespace(NAME.CONSTRAINTCOMPONENT)
 const itemRef = ref()
 const timesRef = ref()
@@ -25,13 +29,6 @@ const state = reactive({
   options: []
 })
 provide('EverrightConstraint', state)
-// const constraintOptionsData = [
-//   {
-//     value: 'date',
-//     label: '起止时间',
-//     disabled: true
-//   }
-// ]
 const {
   getData,
   setData
@@ -50,7 +47,7 @@ const constraintOptionsData = computed(() => {
   const result = [
     {
       value: 'date',
-      label: '起止时间',
+      label: t(`er.${NAME.CONSTRAINTCOMPONENT}.date`),
       disabled: true
     }
   ]
@@ -60,7 +57,7 @@ const constraintOptionsData = computed(() => {
     result.push(
       {
         value: 'times',
-        label: '限制次数'
+        label: t(`er.${NAME.CONSTRAINTCOMPONENT}.times`)
       }
     )
   }
@@ -68,7 +65,7 @@ const constraintOptionsData = computed(() => {
     result.push(
       {
         value: 'props',
-        label: '限制属性'
+        label: t(`er.${NAME.CONSTRAINTCOMPONENT}.props`)
       }
     )
   }

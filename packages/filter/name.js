@@ -13,5 +13,6 @@ export default {
   REGIONTYPE: 'RegionType',
   CASCADERTYPE: 'CascaderType',
   DATECOMPONENT: 'DateComponent',
-  CONSTRAINTCOMPONENT: 'ConstraintComponent'
+  CONSTRAINTCOMPONENT: 'ConstraintComponent',
+  DAYHOURCOMPONENT: 'DayHourComponent'
 }

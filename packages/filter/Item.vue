@@ -88,7 +88,7 @@ const itemLabel = computed(() => {
 </script>
 <template>
   <div :class="[ns.b()]">
-    <h2 v-if="!isInConstraint && ER.props.type === 'matrix'">{{ t('er.item.itemLabel') }} {{ itemLabel }}</h2>
+    <h2 v-if="!isInConstraint && ER.props.type === 'matrix'">{{ t(`er.${NAME.FILTERITEM}.itemLabel`) }} {{ itemLabel }}</h2>
     <div :class="['EverrightFilterOption']">
       <LogicalOperatorComponent
         v-if="!isInConstraint && isShowOperator"
@@ -114,7 +114,7 @@ const itemLabel = computed(() => {
           :class="[ns.e('add')]"
           @click="addRule"
           link
-        >{{isInConstraint ? t('er.item.addProp') : t('er.item.addCondition')}}</el-button>
+        >{{isInConstraint ? t(`er.${NAME.FILTERITEM}.addProp`) : t(`er.${NAME.FILTERITEM}.addCondition1`)}}</el-button>
       </div>
     </div>
   </div>

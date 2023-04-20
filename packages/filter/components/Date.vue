@@ -16,6 +16,10 @@ const props = defineProps(['isRange', 'params', 'isShowSwitchButton', 'defaultVa
 const ER = inject('Everright')
 const ns = hooks.useNamespace(NAME.DATECOMPONENT)
 const staticDateRef = ref()
+const {
+  t,
+  lang
+} = hooks.useI18n()
 const state = reactive({
   hasToday: 1,
   isShowIncludeToday: false,
@@ -38,75 +42,68 @@ watch(() => props.isRange, (newVal) => {
 }, {
   immediate: true
 })
-const shortcutsData = [
-  {
-    label: '今日',
-    en_label: 'Today',
-    active: false,
-    value: '- 0 days/- 0 days',
-    key: 'today_today'
-  },
-  {
-    label: '本周',
-    en_label: 'This Week',
-    active: false,
-    value: '- 0 weeks/- 0 weeks',
-    key: 'today_thisWeek'
-  },
-  {
-    label: '本月',
-    en_label: 'This Month',
-    active: false,
-    value: '- 0 months/- 0 months',
-    key: 'today_thisMonth'
-  },
-  {
-    label: '今年',
-    en_label: 'This Year',
-    active: false,
-    value: '- 0 years/- 0 years',
-    key: 'today_thisYear'
-  },
-  {
-    label: '上线至今',
-    en_label: 'Released So Far',
-    active: false,
-    value: 'release_time/- 0 days',
-    key: 'yesterday_onlineToday'
-  },
-  {
-    label: '昨日',
-    en_label: 'Yesterday',
-    active: false,
-    value: '- 1 days/- 1 days',
-    key: 'yesterday_yesterday'
-  },
-  {
-    label: '上周',
-    en_label: 'Last Week',
-    active: false,
-    value: '- 1 weeks/- 1 weeks',
-    key: 'yesterday_lastWeek'
-  },
-  {
-    label: '上月',
-    en_label: 'Last Month',
-    active: false,
-    value: '- 1 months/- 1 months',
-    key: 'yesterday_lastMonth'
-  },
-  {
-    label: '去年',
-    en_label: 'Last Year',
-    active: false,
-    value: '- 1 years/- 1 years',
-    key: 'yesterday_lastYear'
-  }
-]
+const shortcutsData = computed(() => {
+  return [
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.today_today`),
+      active: false,
+      value: '- 0 days/- 0 days',
+      key: 'today_today'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.today_thisWeek`),
+      active: false,
+      value: '- 0 weeks/- 0 weeks',
+      key: 'today_thisWeek'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.today_thisMonth`),
+      active: false,
+      value: '- 0 months/- 0 months',
+      key: 'today_thisMonth'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.today_thisYear`),
+      active: false,
+      value: '- 0 years/- 0 years',
+      key: 'today_thisYear'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.yesterday_onlineToday`),
+      active: false,
+      value: 'release_time/- 0 days',
+      key: 'yesterday_onlineToday'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.yesterday_yesterday`),
+      active: false,
+      value: '- 1 days/- 1 days',
+      key: 'yesterday_yesterday'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.yesterday_lastWeek`),
+      active: false,
+      value: '- 1 weeks/- 1 weeks',
+      key: 'yesterday_lastWeek'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.yesterday_lastMonth`),
+      active: false,
+      value: '- 1 months/- 1 months',
+      key: 'yesterday_lastMonth'
+    },
+    {
+      label: t(`er.${NAME.DATECOMPONENT}.yesterday_lastYear`),
+      active: false,
+      value: '- 1 years/- 1 years',
+      key: 'yesterday_lastYear'
+    }
+  ]
+})
 const manualsData = ['intervalBefore', 'afterBefore', 'erenowBefore', 'intervalBetween']
 const shortcuts = computed(() => {
   const excludeShortcuts = _.get(unref(props.params), 'datePanel.excludeShortcuts', [])
-  return shortcutsData.map((e) => {
+  return shortcutsData.value.map((e) => {
     e.active = state.dynamicDate.shortcut === e.value
     return e
   }).filter((e) => excludeShortcuts.indexOf(e.key) === -1)
@@ -119,12 +116,12 @@ const manualType = computed(() => {
   return _.get(unref(props.params), 'datePanel.manualType', 3)
 })
 const dynamicDateSuffix = (type) => {
-  return type === 1 ? '天' : '时'
+  return (type === 1 ? t('er.public.days') : t('er.public.hours'))
 }
 const buttonText = computed(() => {
-  let result = '请选择...'
+  let result = t('er.public.select')
   if (state.absolute) {
-    result = '绝对时间'
+    result = t(`er.${NAME.DATECOMPONENT}.absolute`)
   } else {
     const dynamicDate = state.dynamicDate
     for (const key in dynamicDate) {
@@ -136,17 +133,17 @@ const buttonText = computed(() => {
         if (dynamicDate[key].value) {
           switch (key) {
             case 'intervalBefore':
-              result = `过去 ${dynamicDate[key].value} ${dynamicDateSuffix(dynamicDate[key].type)}`
+              result = `${t(`er.${NAME.DATECOMPONENT}.last`)} ${dynamicDate[key].value} ${dynamicDateSuffix(dynamicDate[key].type)}`
               break
             case 'afterBefore':
-              result = `未来 ${dynamicDate[key].value} ${dynamicDateSuffix(dynamicDate[key].type)}`
+              result = `${t(`er.${NAME.DATECOMPONENT}.next`)} ${dynamicDate[key].value} ${dynamicDateSuffix(dynamicDate[key].type)}`
               break
             case 'erenowBefore':
-              result = `${dynamicDate[key].value} ${dynamicDateSuffix(dynamicDate[key].type)} 前`
+              result = `${dynamicDate[key].value} ${dynamicDateSuffix(dynamicDate[key].type)} ${t(`er.${NAME.DATECOMPONENT}.ago`)}`
               break
             case 'intervalBetween':
               if (dynamicDate[key].value.every(e => e !== null)) {
-                result = `过去 ${dynamicDate[key].value[0]} - ${dynamicDate[key].value[1]} ${dynamicDateSuffix(dynamicDate[key].type)}`
+                result = `${t(`er.${NAME.DATECOMPONENT}.last`)} ${dynamicDate[key].value[0]} - ${dynamicDate[key].value[1]} ${dynamicDateSuffix(dynamicDate[key].type)}`
               }
               break
           }
@@ -243,23 +240,23 @@ if (_.isEmpty(ER.state.remoteData)) {
           v-if="item === 'intervalBefore'"
           v-model="state.dynamicDate.intervalBefore"
           @change="() => handleEvent('intervalBefore')"
-          prependLabel="过去"
+          :prependLabel="t(`er.${NAME.DATECOMPONENT}.last`)"
           :type="manualType"/>
         <DayHourComponent
           v-if="item === 'afterBefore'"
           v-model="state.dynamicDate.afterBefore"
           @change="() => handleEvent('afterBefore')"
-          prependLabel="未来"
+          :prependLabel="t(`er.${NAME.DATECOMPONENT}.next`)"
           :type="manualType"/>
         <DayHourComponent
           v-if="item === 'erenowBefore'"
-          appendLabel="前"
+          :appendLabel="t(`er.${NAME.DATECOMPONENT}.ago`)"
           v-model="state.dynamicDate.erenowBefore"
           @change="() => handleEvent('erenowBefore')"
           :type="manualType"/>
         <DayHourComponent
           v-if="item === 'intervalBetween'"
-          prependLabel="过去"
+          :prependLabel="t(`er.${NAME.DATECOMPONENT}.last`)"
           :isRange="true"
           v-model="state.dynamicDate.intervalBetween"
           @change="() => handleEvent('intervalBetween')"
@@ -269,7 +266,7 @@ if (_.isEmpty(ER.state.remoteData)) {
         :class="[ns.e('includeToday')]"
         v-show="state.isShowIncludeToday">
         <el-checkbox
-          v-model="state.hasToday" label="含今天" :true-label="1" :false-label="0" size="large" />
+          v-model="state.hasToday" :label="t(`er.${NAME.DATECOMPONENT}.today`)" :true-label="1" :false-label="0" size="large" />
       </div>
     </div>
     <div :class="[ns.e('absolute')]">
@@ -278,7 +275,7 @@ if (_.isEmpty(ER.state.remoteData)) {
         text
         @click="() => handleEvent('staticDate')"
       >
-        绝对时间<el-icon><Calendar /></el-icon>
+        {{t(`er.${NAME.DATECOMPONENT}.absolute`)}}<el-icon><Calendar /></el-icon>
       </el-button>
     </div>
   </el-popover>
