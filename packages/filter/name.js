@@ -1,5 +1,5 @@
 export default {
-  EVERRIGHTFILTER: 'EverrightEditor',
+  EVERRIGHTFILTER: 'EverrightFilter',
   FILTERITEM: 'FilterItem',
   FILTERRULE: 'FilterRule',
   PICKERCOMPONENT: 'PickerComponent',

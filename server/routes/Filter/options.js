@@ -148,6 +148,21 @@ export default (req, res) => {
                 // excludeManuals: ['intervalBetween'],
                 manualType: 3 // default = 3; 1=days 2=hours 3 = can choose the hours or days
               }
+            },
+            {
+              operatorKey: 'Date',
+              label: '日期(only Exact Date)',
+              value: 'Date5',
+              renderType: 'DATE',
+              // excludeOperator: {
+              //   dateOperator: ['date'],
+              //   operator: ['equal']
+              // },
+              datePanel: {
+                excludeShortcuts: -1,
+                excludeManuals: -1
+                // manualType: 3 // default = 3; 1=days 2=hours 3 = can choose the hours or days
+              }
             }
           ]
         },

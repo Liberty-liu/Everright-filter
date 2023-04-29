@@ -103,15 +103,20 @@ const shortcutsData = computed(() => {
 const manualsData = ['intervalBefore', 'afterBefore', 'erenowBefore', 'intervalBetween']
 const shortcuts = computed(() => {
   const excludeShortcuts = _.get(unref(props.params), 'datePanel.excludeShortcuts', [])
-  return shortcutsData.value.map((e) => {
-    e.active = state.dynamicDate.shortcut === e.value
-    return e
-  }).filter((e) => excludeShortcuts.indexOf(e.key) === -1)
+  return excludeShortcuts === -1
+    ? []
+    : shortcutsData.value.map((e) => {
+      e.active = state.dynamicDate.shortcut === e.value
+      return e
+    }).filter((e) => excludeShortcuts.indexOf(e.key) === -1)
 })
 const manuals = computed(() => {
   const excludeManuals = _.get(unref(props.params), 'datePanel.excludeManuals', [])
-  return manualsData.filter((e) => excludeManuals.indexOf(e) === -1)
+  return excludeManuals === -1 ? [] : manualsData.filter((e) => excludeManuals.indexOf(e) === -1)
 })
+if (!manuals.value.length && !shortcuts.value.length) {
+  state.absolute = true
+}
 const manualType = computed(() => {
   return _.get(unref(props.params), 'datePanel.manualType', 3)
 })
@@ -280,7 +285,7 @@ if (_.isEmpty(ER.state.remoteData)) {
     </div>
   </el-popover>
   <el-button
-    v-if="isShowSwitchButton || !isRange"
+    v-if="!manuals.length && !shortcuts.length ? false : (isShowSwitchButton || !isRange)"
     :class="[ns.e('button'), v$.dynamicDate.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
     ref="buttonRef">
     {{buttonText}}<el-icon><Calendar /></el-icon>

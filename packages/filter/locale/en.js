@@ -21,7 +21,7 @@ export default {
       addCondition: 'Add a Condition',
       addProp: 'Add an Attribute'
     },
-    EverrightEditor: {
+    EverrightFilter: {
       addGroupLabel: 'Add Condition Group'
     },
     ConstraintComponent: {

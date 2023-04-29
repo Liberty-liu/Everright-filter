@@ -87,6 +87,15 @@
           "property": "Date4",
           "dateOperator": "day",
           "value": 31
+        },
+        {
+          "operator": "equal",
+          "property": "Date5",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "static",
+            "value": "1680537600"
+          }
         }
       ],
       "logicalOperator": "or"

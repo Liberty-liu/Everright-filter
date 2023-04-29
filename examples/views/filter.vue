@@ -84,9 +84,9 @@ const lang = ref(localStorage.getItem('er-lang') || 'zh-cn')
 const ERfilterRef = ref(null)
 const state = reactive({
   value0: {},
-  type: 'quick-search'
+  // type: 'quick-search'
   // type: 'linear'
-  // type: 'matrix'
+  type: 'matrix'
   // type: 'quick-filter'
 })
 const isReRender = ref(true)
