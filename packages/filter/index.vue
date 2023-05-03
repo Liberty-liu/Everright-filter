@@ -205,6 +205,7 @@ defineExpose({
     canFire = false
     state.loading = true
     setData(...arg)
+    canFire = true
   },
   pushData,
   clearData

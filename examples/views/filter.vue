@@ -69,7 +69,6 @@ const getOptions = async () => {
 const getConditions = async (params) => {
   // return hooks.useFetch(uri.options)
   return new Promise((resolve, reject) => {
-    console.log(params)
     try {
       hooks.useFetch(...utils.apiParams('conditions', 'get', httpPrams, {
         params
@@ -149,6 +148,7 @@ const handleEvent = (type) => {
   }
 }
 const handleListener = ({ type, data }) => {
+  console.log(type)
   if (type === 'init') {
     handleEvent(1)
   }
