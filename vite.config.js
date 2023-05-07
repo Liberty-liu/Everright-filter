@@ -14,12 +14,13 @@ export default defineConfig({
       fileName: 'Everright-filter'
     },
     rollupOptions: {
-      external: ['vue', 'element-plus'],
+      external: ['vue', 'element-plus', 'lodash-es'],
       // https://rollupjs.org/guide/en/#big-list-of-options
       output: {
         globals: {
           vue: 'Vue',
-          'element-plus': 'elementPlus'
+          'element-plus': 'elementPlus',
+          'lodash-es': '_'
         }
       }
     }

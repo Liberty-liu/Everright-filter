@@ -1,6 +1,6 @@
 {
   "name": "everright-filter",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "files": [
     "dist"
   ],
@@ -76,8 +76,5 @@
     "commitizen": {
       "path": "node_modules/cz-git"
     }
-  },
-  "publishConfig": {
-    "registry": "http://localhost:4873"
   }
 }

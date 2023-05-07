@@ -1,5 +1,5 @@
 <script>
-import { computed, ref, reactive, provide, inject, toRefs, onMounted, watch } from 'vue'
+import { computed, ref, reactive, provide, inject, toRefs, onMounted, watch, onBeforeUnmount } from 'vue'
 import NAME from '@ER/filter/name.js'
 import _ from 'lodash-es'
 import hooks from '@ER/hooks'
@@ -57,10 +57,9 @@ defineExpose({
   setData,
   addRule
 })
-const operatorHeight = ref(0)
+const operatorHeight = ref('auto')
 const callback = (mutationsList) => {
   let curHeight = 0
-  if (!optionContentRef.value) return false
   const nodes = optionContentRef.value.querySelectorAll(`.${ns.e('rule')}`)
   for (let i = 0; i < nodes.length - 1; i++) {
     const cur = nodes[i]
@@ -69,13 +68,18 @@ const callback = (mutationsList) => {
   if (nodes.length > 1) {
     curHeight += 52
   }
-  operatorHeight.value = curHeight
+  operatorHeight.value = curHeight === 0 ? 'auto' : curHeight
 }
+let observer = ''
 if (!isInConstraint) {
   onMounted(() => {
     const config = { attributes: false, childList: true, subtree: true }
-    const observer = new MutationObserver(callback)
+    observer = new MutationObserver(callback)
     observer.observe(optionContentRef.value, config)
+  })
+  onBeforeUnmount(() => {
+    observer.disconnect()
+    observer = null
   })
 }
 watch(state.rules, (newVal) => {

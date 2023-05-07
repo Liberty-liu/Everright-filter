@@ -94,32 +94,52 @@ const handleChange = (value) => {
   if (unref(isMultiple)) {
     const newValue = value
     newValue.forEach(e => {
-      const selectedChildren = flatNodes([_.find(element.value.$refs.panel.getCheckedNodes(), { valueByOption: e })]).map(e => e.valueByOption).filter(e1 => e1 !== e)
-      const findChildren = _.intersectionBy(element.value.$refs.panel.getCheckedNodes(), selectedChildren.map(e => { return { valueByOption: e } }), 'valueByOption')
+      const selectedChildren = flatNodes([_.find(element.value.$refs.cascaderPanelRef.getCheckedNodes(), { valueByOption: e })]).map(e => e.valueByOption).filter(e1 => e1 !== e)
+      const findChildren = _.intersectionBy(element.value.$refs.cascaderPanelRef.getCheckedNodes(), selectedChildren.map(e => { return { valueByOption: e } }), 'valueByOption')
       findChildren.forEach(e => {
         newValue.splice(newValue.indexOf(e.valueByOption), 1)
-        element.value.$refs.panel.handleCheckChange(e, false)
+        element.value.$refs.cascaderPanelRef.handleCheckChange(e, false)
       })
     })
   }
 }
+const componentProps = computed(() => {
+  const result = {
+    placeholder: t('er.public.select'),
+    clearable: true,
+    filterable: true,
+    'collapse-tags': true,
+    checkStrictly: true,
+    props: cascaderProps.value,
+    onChange: handleChange
+  }
+  return _.merge(result, _.get(props, 'params.customProps', {}))
+})
 </script>
 <template>
   <div
     v-loading="state.loading">
     <el-cascader
-      clearable
-      :placeholder="t('er.public.select')"
+      v-model="state.value0" :options="state.options"
       v-if="state.isChanged"
       :class="[ns.b(), ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
-      filterable
       ref="element"
-      collapse-tags
-      collapse-tags-tooltip
-      :checkStrictly="true"
-      :props="cascaderProps"
-      v-model="state.value0" :options="state.options"
-      @change="handleChange"
+      v-bind="componentProps"
     />
+<!--    <el-cascader-->
+<!--      clearable-->
+<!--      :placeholder="t('er.public.select')"-->
+<!--      v-if="state.isChanged"-->
+<!--      :class="[ns.b(), ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"-->
+<!--      filterable-->
+<!--      ref="element"-->
+<!--      collapse-tags-->
+<!--      collapse-tags-tooltip-->
+<!--      :checkStrictly="true"-->
+<!--      :props="cascaderProps"-->
+<!--      v-model="state.value0" :options="state.options"-->
+<!--      @change="handleChange"-->
+<!--      v-bind="componentProps"-->
+<!--    />-->
   </div>
 </template>

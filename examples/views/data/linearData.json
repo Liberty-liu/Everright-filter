@@ -6,6 +6,11 @@
           "operator": "contains",
           "property": "text",
           "value": "123"
+        },
+        {
+          "operator": "equal",
+          "property": "cascader01",
+          "value": "any"
         }
       ],
       "logicalOperator": "and"

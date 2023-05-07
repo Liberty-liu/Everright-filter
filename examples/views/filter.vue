@@ -84,8 +84,8 @@ const ERfilterRef = ref(null)
 const state = reactive({
   value0: {},
   // type: 'quick-search'
-  // type: 'linear'
-  type: 'matrix'
+  type: 'linear'
+  // type: 'matrix'
   // type: 'quick-filter'
 })
 const isReRender = ref(true)
@@ -148,7 +148,7 @@ const handleEvent = (type) => {
   }
 }
 const handleListener = ({ type, data }) => {
-  console.log(type)
+  // console.log(type)
   if (type === 'init') {
     handleEvent(1)
   }
