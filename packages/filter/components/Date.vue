@@ -219,6 +219,9 @@ if (_.isEmpty(ER.state.remoteData)) {
     }
   })
 }
+const datePickerType = computed(() => {
+  return props.isRange ? 'daterange' : _.get(unref(props.params), 'datePanel.pickerType', 'date')
+})
 </script>
 <template>
   <el-popover
@@ -293,7 +296,7 @@ if (_.isEmpty(ER.state.remoteData)) {
   <el-date-picker
     :class="[ns.e('width'), v$.staticDate.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
     ref="staticDateRef"
-    :type="isRange ? 'daterange' : 'date'"
+    :type="datePickerType"
     v-if="state.absolute"
     clearable
     valueFormat="X"

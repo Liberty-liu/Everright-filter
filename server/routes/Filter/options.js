@@ -163,6 +163,31 @@ export default (req, res) => {
                 excludeManuals: -1
                 // manualType: 3 // default = 3; 1=days 2=hours 3 = can choose the hours or days
               }
+            },
+            {
+              operatorKey: 'Date',
+              label: '日期(dates)',
+              value: 'Date6',
+              renderType: 'DATE',
+              datePanel: {
+                excludeShortcuts: -1,
+                excludeManuals: -1,
+                pickerType: 'dates'
+              }
+            },
+            {
+              operatorKey: 'Date',
+              label: '日期(datetime)',
+              value: 'Date7',
+              renderType: 'DATE',
+              includeOperator: {
+                dateOperator: ['date']
+              },
+              datePanel: {
+                excludeShortcuts: -1,
+                excludeManuals: -1,
+                pickerType: 'datetime'
+              }
             }
           ]
         },

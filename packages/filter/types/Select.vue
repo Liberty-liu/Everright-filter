@@ -75,6 +75,7 @@ defineExpose({
     :multiple="isMultiple"
     :multiple-limit="params.multipleLimit || 200"
     filterable
+    collapseTagsTooltip
     :placeholder="t('er.public.select')"
     clearable
     default-first-option

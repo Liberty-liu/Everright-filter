@@ -40,6 +40,7 @@ watch(() => props.modelValue, (val, oldVal) => {
     <el-select
       :class="[ns.e('width')]"
       v-model="state.value0"
+      v-show="!(options[0].length === 1)"
       filterable>
       <el-option
         v-for="item in options[0]"

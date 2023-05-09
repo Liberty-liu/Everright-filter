@@ -122,6 +122,7 @@ const componentProps = computed(() => {
     <el-cascader
       v-model="state.value0" :options="state.options"
       v-if="state.isChanged"
+      collapseTagsTooltip
       :class="[ns.b(), ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
       ref="element"
       v-bind="componentProps"

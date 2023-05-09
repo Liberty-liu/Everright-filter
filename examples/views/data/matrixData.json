@@ -96,6 +96,27 @@
             "dateType": "static",
             "value": "1680537600"
           }
+        },
+        {
+          "operator": "equal",
+          "property": "Date6",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1683475200",
+              "1683648000"
+            ]
+          }
+        },
+        {
+          "operator": "equal",
+          "property": "Date7",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "static",
+            "value": "1683616414"
+          }
         }
       ],
       "logicalOperator": "or"

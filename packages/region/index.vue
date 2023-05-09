@@ -330,7 +330,6 @@ onMounted(() => {
             </template>
             <template v-else>
               <el-tooltip
-                :teleported="false"
                 :disabled="state.popperVisible"
                 :fallback-placements="['bottom', 'top', 'right', 'left']"
                 placement="bottom"

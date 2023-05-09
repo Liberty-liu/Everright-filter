@@ -84,9 +84,9 @@ const ERfilterRef = ref(null)
 const state = reactive({
   value0: {},
   // type: 'quick-search'
-  type: 'linear'
+  // type: 'linear'
   // type: 'matrix'
-  // type: 'quick-filter'
+  type: 'quick-filter'
 })
 const isReRender = ref(true)
 watch(() => state.type, () => {

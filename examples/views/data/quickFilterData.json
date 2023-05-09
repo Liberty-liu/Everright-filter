@@ -141,6 +141,27 @@
             4,
             11
           ]
+        },
+        {
+          "operator": "equal",
+          "property": "Date9",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1683475200",
+              "1684166400"
+            ]
+          }
+        },
+        {
+          "operator": "equal",
+          "property": "Date10",
+          "dateOperator": "date",
+          "value": {
+            "dateType": "static",
+            "value": "1685635200"
+          }
         }
       ],
       "logicalOperator": "and"
