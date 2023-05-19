@@ -115,11 +115,15 @@ const componentProps = computed(() => {
   }
   return _.merge(result, _.get(props, 'params.customProps', {}))
 })
+const filterMethod = (node, keyword) => {
+  return node.text.toLowerCase().includes(keyword.toLowerCase())
+}
 </script>
 <template>
   <div
     v-loading="state.loading">
     <el-cascader
+      :filter-method="filterMethod"
       v-model="state.value0" :options="state.options"
       v-if="state.isChanged"
       collapseTagsTooltip

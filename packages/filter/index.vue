@@ -36,16 +36,24 @@ const props = defineProps({
     default: 'zh-cn'
   },
   getOptions: {
-    type: [Function, String]
+    type: Function
   },
   getConditions: {
-    type: [Function, String]
+    type: Function
   },
   getProps: {
-    type: [Function, String]
+    type: Function
   },
   getPropValues: {
-    type: [Function, String]
+    type: Function
+  },
+  canAddRule: {
+    type: Function,
+    default: () => {}
+  },
+  ruleLimit: {
+    type: Number,
+    default: -1
   }
 })
 const {
@@ -108,12 +116,17 @@ const fireEvent = (type, data) => {
     })
   }
 }
+const isShowAdd = computed(() => {
+  // console.log(_.flatten(_.get(itemRef, 'value', []).map(e => e.state.rules)).length)
+  return state.isShowAdd && props.ruleLimit === -1 ? true : _.flatten(_.get(itemRef, 'value', []).map(e => e.state.rules)).length < props.ruleLimit
+})
 provide('Everright', {
   state,
   api,
   readied,
   props,
-  fireEvent
+  fireEvent,
+  isShowAdd
 })
 const flatNodes = (nodes) => {
   return nodes.reduce((res, node) => {
@@ -244,7 +257,7 @@ const addGroupLabel = computed(() => {
           </Item>
         </TransitionGroup>
         <el-button
-          v-if="state.isShowAdd"
+          v-if="isShowAdd"
           :class="[ns.e('add')]"
           @click="addItem"
           link

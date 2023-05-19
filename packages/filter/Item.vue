@@ -50,12 +50,17 @@ const {
   ruleRef
 })
 const addRule = () => {
-  state.rules.push(...utils.generateItems(1))
+  if (ER.props.canAddRule() !== false) {
+    state.rules.push(...utils.generateItems(1))
+  }
 }
 defineExpose({
   getData,
   setData,
-  addRule
+  addRule () {
+    state.rules.push(...utils.generateItems(1))
+  },
+  state
 })
 const operatorHeight = ref('auto')
 const callback = (mutationsList) => {
@@ -115,7 +120,7 @@ const itemLabel = computed(() => {
           />
         </TransitionGroup>
         <el-button
-          v-if="ER.state.isShowAdd"
+          v-if="isInConstraint ? true : ER.isShowAdd.value"
           :class="[ns.e('add')]"
           @click="addRule"
           link

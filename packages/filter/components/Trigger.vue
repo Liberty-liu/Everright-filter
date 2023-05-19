@@ -31,6 +31,9 @@ const handleChange = (val) => {
 defineExpose({
   ref: element
 })
+const filterMethod = (node, keyword) => {
+  return node.text.toLowerCase().includes(keyword.toLowerCase())
+}
 </script>
 <template>
   <el-cascader
@@ -39,6 +42,7 @@ defineExpose({
     :checkStrictly="true"
     :model-value="modelValue"
     filterable
+    :filter-method="filterMethod"
     @change="handleChange"
     :props="{
         emitPath: false

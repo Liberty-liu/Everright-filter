@@ -186,7 +186,7 @@ const handleLang = (val) => {
     :isFetchOptions="!isShowValidateState"
     :isShowValidateState="!isShowValidateState"
     :options="defaultOptions"
-    :getOptions="isShowValidateState ? getOptions : ''"
+    :getOptions="isShowValidateState ? getOptions : undefined"
     :getConditions="getConditions"
     :type="state.type"
     ref="ERfilterRef"/>

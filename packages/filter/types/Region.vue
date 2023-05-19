@@ -53,6 +53,7 @@ defineExpose({
     v-if="state.isChanged"
     v-model="state.value0"
     :multiple="isMultiple"
+    :selectType="props.params.selectType"
     clearable
     :placeholder="t('er.public.select')"
     ref="erRegin"/>

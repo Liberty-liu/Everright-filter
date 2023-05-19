@@ -1,13 +1,25 @@
 {
   "name": "everright-filter",
-  "version": "0.0.20",
+  "version": "0.0.22",
   "files": [
     "dist"
   ],
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "everright",
+    "everright-filter"
+  ],
   "type": "module",
-  "main": "dist/Everright-filter.umd.cjs",
-  "module": "dist/Everright-filter.js",
-  "style": "dist/style.css",
+  "main": "./dist/Everright-filter.umd.cjs",
+  "module": "./dist/Everright-filter.js",
+  "style": "./dist/style.css",
+  "exports": {
+    ".": {
+      "import": "./dist/Everright-filter.js",
+      "require": "./dist/Everright-filter.umd.cjs"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
   "scripts": {
     "dev:server": "nodemon server --watch server",
     "dev": "vite --host 0.0.0.0 --port 5174",

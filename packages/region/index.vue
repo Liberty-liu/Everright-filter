@@ -19,14 +19,18 @@ const props = defineProps({
   },
   modelValue: {
     type: Array
+  },
+  selectType: {
+    type: Number,
+    default: 3
   }
 })
 const emit = defineEmits(['update:modelValue', 'change'])
 let inputInitialHeight = 0
 const pressDeleteCount = 0
 const region = new Region(areaList, {
-  isFilter: true,
-  selectType: 3
+  isFilter: false,
+  selectType: props.selectType
 })
 const tooltipRef = ref()
 const tagWrapper = ref()

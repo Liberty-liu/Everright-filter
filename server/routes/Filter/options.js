@@ -43,6 +43,7 @@ export default (req, res) => {
               operatorKey: 'Gender',
               value: 'Region',
               multiple: false
+              // selectType: 1 default 3
             },
             {
               label: '文本',
