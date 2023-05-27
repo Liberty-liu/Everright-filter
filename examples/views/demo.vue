@@ -1,123 +1,72 @@
-<template>
-  <!--  <div class="row">-->
-  <!--    <div class="col-8">-->
-  <!--      <h3>Draggable</h3>-->
-  <!--      <draggable-->
-  <!--        v-model="rows"-->
-  <!--        tag="v-layout"-->
-  <!--        class="row wrap fill-height align-center sortable-list"-->
-  <!--        style="background: grey;"-->
-  <!--      >-->
-  <!--        <v-flex-->
-  <!--          v-for="row in rows"-->
-  <!--          :key="row.index"-->
-  <!--          class="sortable"-->
-  <!--          xs12-->
-  <!--          my-2-->
-  <!--          style="background: red"-->
-  <!--        >-->
-  <!--          <draggable-->
-  <!--            :list="row.items"-->
-  <!--            tag="v-layout"-->
-  <!--            :group="{ name: 'row' }"-->
-  <!--            class="row wrap justify-space-around"-->
-  <!--          >-->
-  <!--            <v-flex-->
-  <!--              v-for="item in row.items"-->
-  <!--              :key="item.title"-->
-  <!--              xs4-->
-  <!--              pa-3-->
-  <!--              class="row-v"-->
-  <!--            >-->
-  <!--              <v-card style="height: 100px;">{{ item.title }}</v-card>-->
-  <!--            </v-flex>-->
-  <!--          </draggable>-->
-  <!--        </v-flex>-->
-  <!--      </draggable>-->
-  <!--    </div>-->
-
-  <!--    <rawDisplayer class="col-3" :value="rows" title="List" />-->
-  <!--  </div>-->
-  <div class="row">
-    <div class="col-8">
-      <h3>Draggable</h3>
-      <draggable
-        v-model="rows"
-        style="background: grey;"
-      >
-        <template #item="{ element }">
-          <div
-            class="Everright-editor-InlineLayout">
-            <draggable
-              :list="element.items"
-              :group="{ name: 'row' }"
-            >
-              <template #item="{ element }">
-                <div style="position: relative">
-                  <div>{{ element.title }}</div>
-                </div>
-              </template>
-            </draggable>
-          </div>
-        </template>
-      </draggable>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'functional',
-  display: 'Functional third party',
-  order: 17,
-  components: {
-  },
-  data () {
-    return {
-      enabled: true,
-      rows: [
-        {
-          index: 1,
-          items: [
-            {
-              title: 'item 1'
+<script setup>
+import { ref } from 'vue'
+import { EverrightFilter } from '/packages/filter'
+const ERfilterRef = ref(null)
+const lang = ref('en')
+const handleListener = ({ type, data }) => {
+}
+const getOptions = async () => {
+  return new Promise((resolve, reject) => {
+    resolve({
+      data: {
+        options: [
+          {
+            label: '客户名称',
+            en_label: 'Customer name',
+            value: 'input_NYF_NaWIL1ezQeje19fO5',
+            operatorKey: 'input',
+            renderType: 'TEXT',
+            includeOperator: {
+              operator: [
+                'contains'
+              ]
             }
-          ]
-        },
-        {
-          index: 2,
-          items: [
+          },
+          {
+            label: '客户编号',
+            en_label: 'Customer ID',
+            value: 'input_4FbXNPc1ValSmbVZ4X03i',
+            operatorKey: 'input',
+            renderType: 'TEXT',
+            includeOperator: {
+              operator: [
+                'contains'
+              ]
+            }
+          },
+          {
+            label: '富文本编辑器',
+            en_label: 'rich text editor',
+            value: 'html_doavWMEKsA04CBVc2qkvB',
+            operatorKey: 'input',
+            renderType: 'TEXT',
+            includeOperator: {
+              operator: [
+                'contains'
+              ]
+            }
+          }
+        ],
+        operators: {
+          input: [
             {
-              title: 'item 2'
-            },
-            {
-              title: 'item 3'
+              value: 'contains',
+              style: 'noop'
             }
           ]
         }
-      ]
-    }
-  }
+      }
+    })
+  })
 }
 </script>
-<style scoped>
-.buttons {
-  margin-top: 35px;
-}
-
-.row-v {
-  height: 150px;
-  width: 200px;
-}
-
-.ghost {
-  opacity: 0.5;
-  background: #c8ebfb;
-}
-.Everright-editor-InlineLayout>div {
-  display: flex;
-}
-.Everright-editor-InlineLayout>div> * {
-  width: 50%;
-}
-</style>
+<template>
+  <div>
+    <EverrightFilter
+      :lang="lang"
+      :getOptions="getOptions"
+      type="quick-filter"
+      @listener="handleListener"
+      ref="ERfilterRef"/>
+  </div>
+</template>

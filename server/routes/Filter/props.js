@@ -4,6 +4,7 @@ export default (req, res) => {
     data: [
       {
         label: '用户属性',
+        en_label: 'user property',
         value: 'customer',
         children: [
           {

@@ -62,7 +62,7 @@ if (!isInConstraint) {
 }
 </script>
 <template>
-  <div :class="[ns.b(), (!isInConstraint && ER.props.type !== 'quick-filter') && ns.e('border')]">
+  <div :class="[ns.b(), (!isInConstraint && !/^quick-(search|filter)$/.test(ER.props.type)) && ns.e('border')]">
     <PickerComponent
       ref="pickerRef"
       :id="id"

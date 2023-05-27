@@ -225,7 +225,7 @@ if (/^quick-search$/.test(ER.props.type)) {
 <template>
   <div :class="[ns.b()]">
     <div v-if="ER.props.type === 'quick-filter'">
-      {{params.label}}
+      {{ lang === 'zh-cn' ? params.label : params.en_label}}
     </div>
     <TriggerComponent
       v-if="!isConstraint && ER.props.type !== 'quick-filter'"

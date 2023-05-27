@@ -5,17 +5,19 @@ export default (req, res) => {
       options: [
         {
           label: '属性',
-          en_label: '属性en',
+          en_label: 'properties',
           value: 'customer',
           children: [
             {
               label: '级联(单选)',
+              en_label: 'cascader(multiple = false)',
               renderType: 'CASCADER',
               operatorKey: 'Gender',
               value: 'cascader01'
             },
             {
-              label: '级联(多选禁用子级)',
+              label: '级联(multiple = true)',
+              en_label: 'cascader(multiple = true)',
               renderType: 'CASCADER',
               operatorKey: 'Gender',
               value: 'cascader02',
@@ -23,6 +25,7 @@ export default (req, res) => {
             },
             {
               label: '下拉(multipleLimit = 2)',
+              en_label: 'select(multipleLimit = 2)',
               renderType: 'SELECT',
               operatorKey: 'Gender',
               value: 'Gender',
@@ -31,6 +34,7 @@ export default (req, res) => {
             },
             {
               label: '下拉(multiple = false)',
+              en_label: 'select(multiple = false)',
               renderType: 'SELECT',
               operatorKey: 'Gender',
               value: 'Gender11111',
@@ -39,6 +43,7 @@ export default (req, res) => {
             },
             {
               label: '地区',
+              en_label: 'region',
               renderType: 'REGION',
               operatorKey: 'Gender',
               value: 'Region',
@@ -47,6 +52,7 @@ export default (req, res) => {
             },
             {
               label: '文本',
+              en_label: 'text',
               renderType: 'TEXT',
               operatorKey: 'Text',
               value: 'text'
@@ -54,6 +60,7 @@ export default (req, res) => {
             {
               operatorKey: 'Number',
               label: '数字',
+              en_label: 'number',
               value: 'rating',
               renderType: 'NUMBER'
               // precision: 0,
@@ -64,6 +71,7 @@ export default (req, res) => {
             {
               operatorKey: 'Time',
               label: '时间(时分)',
+              en_label: 'time(hour minute)',
               value: 'time0',
               renderType: 'TIME',
               format: 'HH:mm'
@@ -71,6 +79,7 @@ export default (req, res) => {
             {
               operatorKey: 'Time',
               label: '时间(时分秒)',
+              en_label: 'time(hour minute second)',
               value: 'time1',
               renderType: 'TIME',
               format: 'HH:mm:ss'
@@ -78,6 +87,7 @@ export default (req, res) => {
             {
               operatorKey: 'Date',
               label: '日期(默认全部功能)',
+              en_label: '日期(Default full function)',
               value: 'Date0',
               renderType: 'DATE'
               // excludeOperator: {
@@ -93,6 +103,7 @@ export default (req, res) => {
             {
               operatorKey: 'Date',
               label: '日期(天manualType = 1)',
+              en_label: 'data(天manualType = 1)',
               value: 'Date1',
               renderType: 'DATE',
               // excludeOperator: {
@@ -194,10 +205,12 @@ export default (req, res) => {
         },
         {
           label: '行为',
+          en_label: 'behavior',
           value: 'behavior',
           children: [
             {
               label: '更新昵称',
+              en_label: 'Update nickname',
               renderType: 'NONE',
               operatorKey: 'Gender',
               value: 'Gende111r',
@@ -222,6 +235,7 @@ export default (req, res) => {
             },
             {
               label: '更新昵称(无props)',
+              en_label: '更新昵称(No props)',
               renderType: 'NONE',
               operatorKey: 'Gender',
               value: 'Gende111r0',
@@ -248,37 +262,43 @@ export default (req, res) => {
         Gender: [
           {
             label: '等于',
-            en_label: '等于en',
+            en_label: 'Equal',
             value: 'equal',
             style: 'noop'
           },
           {
             label: '等于其中之一',
+            en_label: 'Equal to one of',
             value: 'one_of',
             style: 'tags'
           },
           {
             label: '不等于',
+            en_label: 'Not equal',
             value: 'not_equal',
             style: 'noop'
           },
           {
             label: '包含',
+            en_label: 'Contains',
             value: 'contains',
             style: 'noop'
           },
           {
             label: '不包含',
+            en_label: 'Not contain',
             value: 'not_contain',
             style: 'noop'
           },
           {
             label: '为空',
+            en_label: 'Empty',
             value: 'empty',
             style: 'none'
           },
           {
             label: '不为空',
+            en_label: 'Not empty',
             value: 'not_empty',
             style: 'none'
           }
@@ -286,36 +306,42 @@ export default (req, res) => {
         Text: [
           {
             label: '等于',
-            value: 'equal',
+            en_label: 'Equal',
             style: 'noop'
           },
           {
             label: '等于其中之一',
+            en_label: 'Equal to one of',
             value: 'one_of',
             style: 'tags'
           },
           {
             label: '不等于',
+            en_label: 'Not equal',
             value: 'not_equal',
             style: 'noop'
           },
           {
             label: '包含',
+            en_label: 'Contains',
             value: 'contains',
             style: 'noop'
           },
           {
             label: '不包含',
+            en_label: 'Not contain',
             value: 'not_contain',
             style: 'noop'
           },
           {
             label: '为空',
+            en_label: 'Empty',
             value: 'empty',
             style: 'none'
           },
           {
             label: '不为空',
+            en_label: 'Not empty',
             value: 'not_empty',
             style: 'none'
           }
@@ -323,46 +349,55 @@ export default (req, res) => {
         Number: [
           {
             label: '等于',
+            en_label: 'Equal',
             value: 'equal',
             style: 'noop'
           },
           {
             label: '不等于',
+            en_label: 'Not equal',
             value: 'not_equal',
             style: 'noop'
           },
           {
             label: '大于',
+            en_label: 'Greater than',
             value: 'greater_than',
             style: 'noop'
           },
           {
             label: '大于等于',
+            en_label: 'Greater than or equal to',
             value: 'greater_than_equal',
             style: 'noop'
           },
           {
             label: '小于',
+            en_label: 'Less than',
             value: 'less_than',
             style: 'noop'
           },
           {
             label: '小于等于',
+            en_label: 'Less than or equal to',
             value: 'less_than_equal',
             style: 'noop'
           },
           {
             label: '区间',
+            en_label: 'Between',
             value: 'between',
             style: 'range'
           },
           {
             label: '为空',
+            en_label: 'Empty',
             value: 'empty',
             style: 'none'
           },
           {
             label: '不为空',
+            en_label: 'Not empty',
             value: 'not_empty',
             style: 'none'
           }
@@ -370,46 +405,55 @@ export default (req, res) => {
         Time: [
           {
             label: '等于',
+            en_label: 'Equal',
             value: 'equal',
             style: 'noop'
           },
           {
             label: '不等于',
+            en_label: 'Not equal',
             value: 'not_equal',
             style: 'noop'
           },
           {
             label: '大于',
+            en_label: 'Greater than',
             value: 'greater_than',
             style: 'noop'
           },
           {
             label: '大于等于',
+            en_label: 'Greater than or equal to',
             value: 'greater_than_equal',
             style: 'noop'
           },
           {
             label: '小于',
+            en_label: 'Less than',
             value: 'less_than',
             style: 'noop'
           },
           {
             label: '小于等于',
+            en_label: 'Less than or equal to',
             value: 'less_than_equal',
             style: 'noop'
           },
           {
             label: '区间',
+            en_label: 'Between',
             value: 'between',
             style: 'range'
           },
           {
             label: '为空',
+            en_label: 'Empty',
             value: 'empty',
             style: 'none'
           },
           {
             label: '不为空',
+            en_label: 'Not empty',
             value: 'not_empty',
             style: 'none'
           }
@@ -417,46 +461,55 @@ export default (req, res) => {
         Date: [
           {
             label: '等于',
+            en_label: 'Equal',
             value: 'equal',
             style: 'noop'
           },
           {
             label: '不等于',
+            en_label: 'Not equal',
             value: 'not_equal',
             style: 'noop'
           },
           {
             label: '大于',
+            en_label: 'Greater than',
             value: 'greater_than',
             style: 'noop'
           },
           {
             label: '大于等于',
+            en_label: 'Greater than or equal to',
             value: 'greater_than_equal',
             style: 'noop'
           },
           {
             label: '小于',
+            en_label: 'Less than',
             value: 'less_than',
             style: 'noop'
           },
           {
             label: '小于等于',
+            en_label: 'Less than or equal to',
             value: 'less_than_equal',
             style: 'noop'
           },
           {
             label: '区间',
+            en_label: 'Between',
             value: 'between',
             style: 'range'
           },
           {
             label: '为空',
+            en_label: 'Empty',
             value: 'empty',
             style: 'none'
           },
           {
             label: '不为空',
+            en_label: 'Not empty',
             value: 'not_empty',
             style: 'none'
           }

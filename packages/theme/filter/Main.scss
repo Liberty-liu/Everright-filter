@@ -42,6 +42,12 @@
     }
   }
   @include e(quick-filter) {
+    padding: 0;
+    .Everright-filter-FilterItem {
+      padding: 0;
+      background: none;
+      margin: 0;
+    }
     .Everright-filter-FilterItem__optionContent.EverrightFilterOptionContent{
       display: flex;
     }

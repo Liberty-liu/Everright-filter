@@ -24,7 +24,7 @@ const props = defineProps({
       return /^(linear|matrix|quick-search|quick-filter)$/.test(value)
     }
   },
-  httpPrams: {
+  httpParams: {
     default () {}
   },
   isShowValidateState: {

@@ -10,7 +10,7 @@ import uri from '@ER-examples/uri.js'
 import hooks from '@ER/hooks'
 import utils from '@ER/utils'
 
-const httpPrams = {
+const httpParams = {
   options: {
     url: uri.options,
     get: {
@@ -70,7 +70,7 @@ const getConditions = async (params) => {
   // return hooks.useFetch(uri.options)
   return new Promise((resolve, reject) => {
     try {
-      hooks.useFetch(...utils.apiParams('conditions', 'get', httpPrams, {
+      hooks.useFetch(...utils.apiParams('conditions', 'get', httpParams, {
         params
       })).then(data => {
         resolve(data)
@@ -84,9 +84,9 @@ const ERfilterRef = ref(null)
 const state = reactive({
   value0: {},
   // type: 'quick-search'
-  // type: 'linear'
+  type: 'linear'
   // type: 'matrix'
-  type: 'quick-filter'
+  // type: 'quick-filter'
 })
 const isReRender = ref(true)
 watch(() => state.type, () => {
@@ -96,16 +96,16 @@ watch(() => state.type, () => {
   })
 })
 const isShowValidateState = computed(() => /^quick-(search|filter)$/.test(state.type))
-const defaultOptions = computed(() => {
-  let result = {}
-  if (state.type === 'quick-filter') {
-    result = quickFilterOptionsData
-  }
-  if (state.type === 'quick-search') {
-    result = quickSearchOptionsData
-  }
-  return result
-})
+// const defaultOptions = computed(() => {
+//   let result = {}
+//   if (state.type === 'quick-filter') {
+//     result = quickFilterOptionsData
+//   }
+//   if (state.type === 'quick-search') {
+//     result = quickSearchOptionsData
+//   }
+//   return result
+// })
 onMounted(() => {
   // erEditor.value.setData([data[4]])
   // erEditor.value.setData({
@@ -180,12 +180,11 @@ const handleLang = (val) => {
   </el-form>
   <EverrightFilter
     :lang="lang"
-    :httpPrams="httpPrams"
+    :httpParams="httpParams"
     v-if="isReRender"
     @listener="handleListener"
     :isFetchOptions="!isShowValidateState"
     :isShowValidateState="!isShowValidateState"
-    :options="defaultOptions"
     :getOptions="isShowValidateState ? getOptions : undefined"
     :getConditions="getConditions"
     :type="state.type"

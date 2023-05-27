@@ -1,4 +1,4 @@
-const host = 'http://192.168.31.181:8002'
+const host = 'http://localhost:8002'
 export default {
   options: `${host}/Everright-api/filter/options`,
   ruleconditions: `${host}/Everright-api/filter/ruleconditions`,
