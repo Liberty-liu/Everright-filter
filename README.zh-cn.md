@@ -16,7 +16,7 @@
 [![written-number](https://img.shields.io/badge/written--number-%3E%3D%200.11.1-green.svg)](https://github.com/yamadapc/js-written-number)
 [![vite](https://img.shields.io/badge/vite-%3E%3D%203.2.5-green.svg)](https://github.com/vitejs/vite.git)
 
-**[中文主页](https://everright.site/zh-cn/module/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/zh-cn/module/filter/introduction.html)**
+**[中文主页](https://everright.site/zh-cn/module/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/en/module/filter/introduction.html)**
 
 Everright-filter是一个通过用户界面轻松生成任何类型的查询语句，使得筛选和过滤数据变得轻而易举。提供多种UI界面，赋能不同的业务场景。
 
