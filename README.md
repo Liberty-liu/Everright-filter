@@ -16,7 +16,7 @@
 [![written-number](https://img.shields.io/badge/written--number-%3E%3D%200.11.1-green.svg)](https://github.com/yamadapc/js-written-number)
 [![vite](https://img.shields.io/badge/vite-%3E%3D%203.2.5-green.svg)](https://github.com/vitejs/vite.git)
 
-**[中文主页](https://everright.site/en/module/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/en/module/filter/introduction.html)**
+**[中文主页](https://everright.site/zh-cn/module/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/en/module/filter/introduction.html)**
 
 Everright-filter is a user interface that easily generates any type of query statement, making filtering and filtering data a breeze. Provide a variety of UI interfaces to enable different business scenarios.
 
