@@ -1,4 +1,4 @@
-<p align="center"><a href="https://everright.site/en/module/filter/introduction.html" target="_blank"><img height="200px" src="https://user-images.githubusercontent.com/21301475/229654952-6cc89842-9db7-421d-87be-e7cee1e26199.png"></a></p>
+<p align="center"><a href="https://everright.site/en/filter/introduction.html" target="_blank"><img height="200px" src="https://user-images.githubusercontent.com/21301475/229654952-6cc89842-9db7-421d-87be-e7cee1e26199.png"></a></p>
 <h1 align="center">Everright-filter</h1>
 
 [简体中文](./README.zh-cn.md) | English 
@@ -16,11 +16,11 @@
 [![written-number](https://img.shields.io/badge/written--number-%3E%3D%200.11.1-green.svg)](https://github.com/yamadapc/js-written-number)
 [![vite](https://img.shields.io/badge/vite-%3E%3D%203.2.5-green.svg)](https://github.com/vitejs/vite.git)
 
-**[中文主页](https://everright.site/zh-cn/module/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/en/module/filter/introduction.html)**
+**[中文主页](https://everright.site/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/en/filter/introduction.html)**
 
 Everright-filter is a user interface that easily generates any type of query statement, making filtering and filtering data a breeze. Provide a variety of UI interfaces to enable different business scenarios.
 
-![image](https://github.com/Liberty-liu/Everright-filter/assets/21301475/c0a5ff74-332a-4843-9ef8-29bd9f369bac)
+![filter](https://github.com/Liberty-liu/Everright-filter/assets/21301475/2a55af5a-800a-49cd-9abe-e422cf42aabc)
 
 ## Features
 
@@ -35,8 +35,8 @@ Everright-filter is a user interface that easily generates any type of query sta
 
 ## Docs
 
-+ [Get Started](https://everright.site/en/module/filter/started.html)
-+ [Docs](https://everright.site/en/module/filter/doc.html)
++ [Get Started](https://everright.site/en/filter/started.html)
++ [Docs](https://everright.site/en/filter/doc.html)
 
 ## Examples
 
