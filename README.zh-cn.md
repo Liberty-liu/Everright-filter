@@ -1,4 +1,4 @@
-<p align="center"><a href="https://everright.site/filter/introduction.html" target="_blank"><img height="200px" src="https://user-images.githubusercontent.com/21301475/229654952-6cc89842-9db7-421d-87be-e7cee1e26199.png"></a></p>
+<p align="center"><img height="200px" src="https://github.com/Liberty-liu/Liberty-liu/assets/21301475/0d71a431-d2d4-4f67-b8bb-d230f7dc258b"></p>
 <h1 align="center">Everright-filter</h1>
 
 [English](./README.md) | 简体中文
