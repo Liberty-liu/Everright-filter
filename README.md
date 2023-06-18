@@ -47,6 +47,24 @@ Everright-filter is a user interface that easily generates any type of query sta
 
 ## Sample screenshot
 
+### text
+![text](https://github.com/Liberty-liu/Everright-filter/assets/21301475/f4c67762-60c0-44f1-bf6d-726660988309)
+
+### number
+![number](https://github.com/Liberty-liu/Everright-filter/assets/21301475/048b03a4-196d-49e0-b816-7c8ea525c50d)
+
+### time
+![time](https://github.com/Liberty-liu/Everright-filter/assets/21301475/65be8861-458b-423b-b50c-d34f97da431b)
+
+### date
+![date](https://github.com/Liberty-liu/Everright-filter/assets/21301475/c4669a5b-2a21-4d1b-b3c6-b390898ca3fd)
+
+### cascader
+![cascader](https://github.com/Liberty-liu/Everright-filter/assets/21301475/8ef740f5-f7bb-4e1d-8608-5a1bb7578e77)
+
+### select
+![cascader](https://github.com/Liberty-liu/Everright-filter/assets/21301475/c03357ae-73ce-43ff-b5dd-a65e4a4330b9)
+
 ### linear
 ![image](https://github.com/Liberty-liu/Everright-filter/assets/21301475/77194eeb-56dd-409e-9876-dbec7a332c11)
 
