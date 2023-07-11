@@ -4,6 +4,11 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "pnpm": "7.9.5",
+    "node": "16.16.0"
+  },
+  "packageManager": "pnpm@7.9.5",
   "license": "MIT",
   "keywords": [
     "everright-filter",
@@ -35,7 +40,8 @@
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx,.vue",
     "lint-fix": "eslint --fix . --ext .js,.jsx,.vue",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
     "@vant/area-data": "^1.4.0",
@@ -60,6 +66,7 @@
     "@vitejs/plugin-vue-jsx": "^2.1.1",
     "body-parser": "^1.20.1",
     "connect-multiparty": "^2.2.0",
+    "conventional-changelog-cli": "^3.0.0",
     "cz-git": "^1.5.3",
     "eslint": "^8.32.0",
     "eslint-config-standard": "^17.0.0",
