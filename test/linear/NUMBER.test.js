@@ -118,7 +118,7 @@ describe('renderType: NUMBER', () => {
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
-  test.only('Modifying the operatorStyle from range to none', async () => {
+  test('Modifying the operatorStyle from range to none', async () => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
       filters: [{
         conditions: [
@@ -140,6 +140,36 @@ describe('renderType: NUMBER', () => {
     const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
     selectOptions[7].click()
     await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test('Modifying the operatorStyle from none to range', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'empty',
+            property: 'rating'
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    selectOptions[6].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    await new Promise(resolve => setTimeout(resolve, 100))
+    const number0Elm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.NUMBERTYPE}-number0`, 'id'))
+    const number1Elm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.NUMBERTYPE}-number1`, 'id'))
+    expect(number0Elm.classes()).toContain('ERFILTER-ERROR')
+    expect(number1Elm.classes()).toContain('ERFILTER-ERROR')
+    number0Elm.find('input').element.value = '10'
+    await number0Elm.find('input').trigger('input')
+    number1Elm.find('input').element.value = '20'
+    await number1Elm.find('input').trigger('input')
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
 })
