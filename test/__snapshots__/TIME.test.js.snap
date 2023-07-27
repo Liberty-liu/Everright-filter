@@ -1,5 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`renderType: TIME > Modifying operators of the same type do not modify values 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "greater_than",
+          "property": "time0",
+          "value": "04:36",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: TIME > Modifying the operatorStyle from none to range 1`] = `
 {
   "filters": [
