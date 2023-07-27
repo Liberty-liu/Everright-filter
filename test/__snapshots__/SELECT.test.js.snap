@@ -42,6 +42,23 @@ exports[`renderType: SELECT > Modifying the operatorStyle from none to tags 1`] 
 }
 `;
 
+exports[`renderType: SELECT > Modifying the operatorStyle from tags to none 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "empty",
+          "property": "Gender",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: SELECT > operator: "style=none" 1`] = `
 {
   "filters": [
