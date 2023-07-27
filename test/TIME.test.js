@@ -33,7 +33,7 @@ describe('renderType: TIME', () => {
   afterEach(() => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.clearData()
   })
-  test.only('operator: "style=noop" && value is not empty', async () => {
+  test('operator: "style=noop" && value is not empty', async () => {
     await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
     document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
     await nextTick()
@@ -56,7 +56,6 @@ describe('renderType: TIME', () => {
     await new Promise(resolve => setTimeout(resolve, 100))
     const timeElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TIMETYPE}-picker`, 'id'))
     expect(timeElm.classes()).toContain('ERFILTER-ERROR')
-    timeElm.find('input').element.value = '10:10'
     await timeElm.find('input').trigger('input')
     timeElm.find('input').trigger('blur')
     timeElm.find('input').trigger('focus')
@@ -65,6 +64,41 @@ describe('renderType: TIME', () => {
     hoursEl.querySelectorAll('.el-time-spinner__item')[4].click()
     await nextTick()
     minutesEl.querySelectorAll('.el-time-spinner__item')[36].click()
+    await nextTick()
+    document.querySelector(utils.getTestId(`${NAME.TIMETYPE}-popperClass`, 'id')).querySelector('.el-time-panel__btn.confirm').click()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test('operator: "style=range" && value is not empty', async () => {
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
+    await nextTick()
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-menu')[1].querySelectorAll('.el-cascader-node')[7].click()
+    await flushPromises()
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    selectOptions[6].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    await new Promise(resolve => setTimeout(resolve, 100))
+    const timeElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TIMETYPE}-picker`, 'id'))
+    expect(timeElm.classes()).toContain('ERFILTER-ERROR')
+    await timeElm.find('input').trigger('input')
+    timeElm.find('input').trigger('blur')
+    timeElm.find('input').trigger('focus')
+    await nextTick()
+    const [
+      startHoursEl,
+      startMinutesEl,
+      endHoursEl,
+      endMinutesEl] = document.querySelectorAll(`${utils.getTestId(`${NAME.TIMETYPE}-popperClass`, 'id')} .el-time-spinner__list`)
+    startHoursEl.querySelectorAll('.el-time-spinner__item')[4].click()
+    await nextTick()
+    startMinutesEl.querySelectorAll('.el-time-spinner__item')[36].click()
+    await nextTick()
+    endHoursEl.querySelectorAll('.el-time-spinner__item')[5].click()
+    await nextTick()
+    endMinutesEl.querySelectorAll('.el-time-spinner__item')[36].click()
+    await nextTick()
     await nextTick()
     document.querySelector(utils.getTestId(`${NAME.TIMETYPE}-popperClass`, 'id')).querySelector('.el-time-panel__btn.confirm').click()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()

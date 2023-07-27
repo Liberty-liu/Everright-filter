@@ -17,3 +17,24 @@ exports[`renderType: TIME > operator: "style=noop" && value is not empty 1`] = `
   "logicalOperator": "and",
 }
 `;
+
+exports[`renderType: TIME > operator: "style=range" && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "between",
+          "property": "time0",
+          "value": [
+            "04:36",
+            "05:36",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
