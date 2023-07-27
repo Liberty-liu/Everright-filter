@@ -17,3 +17,23 @@ exports[`renderType: TEXT > operator: "style=noop" && value is not empty 1`] = `
   "logicalOperator": "and",
 }
 `;
+
+exports[`renderType: TEXT > operator: "style=one_of" && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "one_of",
+          "property": "text",
+          "value": [
+            "1",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
