@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderType: NUMBER > operator: "style=noop" && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "equal",
+          "property": "rating",
+          "value": 1,
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;

@@ -6,7 +6,6 @@ import eslintPlugin from 'vite-plugin-eslint'
 export default defineConfig({
   test: {
     environment: 'jsdom',
-    threads: false,
     clearMocks: true,
     setupFiles: ['./vitest.setup.js'],
     transformMode: {

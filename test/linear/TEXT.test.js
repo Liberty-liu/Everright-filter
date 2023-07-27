@@ -1,32 +1,12 @@
 import { describe, assert, expect, test, beforeEach, afterEach, beforeAll, vi } from 'vitest'
-import { mount, flushPromises, enableAutoUnmount, config } from '@vue/test-utils'
+import { flushPromises, config } from '@vue/test-utils'
 import optionData from '@ER-server/routes/Filter/data/options.js'
-import ElementPlus from 'element-plus'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import { EverrightFilter } from '@ER/filter'
 import NAME from '@ER/filter/name.js'
 import utils from '@ER/utils'
 import { nextTick } from 'vue'
-import { getSelectOptions } from '../utils.js'
+import { getSelectOptions, _mount } from '../utils.js'
 config.global.components.Delete = ElementPlusIconsVue.Delete
-const _mount = (template, data, otherObj) => mount(
-  {
-    components: {
-      EverrightFilter
-    },
-    template,
-    data,
-    ...otherObj
-  },
-  {
-    attachTo: 'body',
-    global: {
-      plugins: [
-        ElementPlus
-      ]
-    }
-  }
-)
 const getOptions = async () => {
   return new Promise((resolve, reject) => {
     resolve({
