@@ -18,6 +18,23 @@ exports[`renderType: NUMBER > Modifying operators of the same type do not modify
 }
 `;
 
+exports[`renderType: NUMBER > Modifying the operatorStyle from range to none 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "empty",
+          "property": "rating",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: NUMBER > operator: "style=none" 1`] = `
 {
   "filters": [
