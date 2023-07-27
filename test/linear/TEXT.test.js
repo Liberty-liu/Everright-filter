@@ -41,6 +41,7 @@ describe('renderType: TEXT', () => {
     wrapper = _mount(`
       <everright-filter
         :getOptions="getOptions"
+        @listener="handleListener"
         ref="ERfilterRef"
       />
       `, () => ({
@@ -107,13 +108,13 @@ describe('renderType: TEXT', () => {
     const inputWrapper = selectElm.find('.el-select__input')
     const selectInputEl = inputWrapper.element
     selectInputEl.value = '1'
-    vi.useFakeTimers()
+    await new Promise(resolve => setTimeout(resolve, 100))
     await inputWrapper.trigger('input')
     getSelectOptions(utils.getTestId(`${NAME.TEXTTYPE}-select-popperClass`, 'id'))[0].click()
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
-  test.only('operator: "style=none"', async () => {
+  test('operator: "style=none"', async () => {
     await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
     document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
     await nextTick()
@@ -122,6 +123,28 @@ describe('renderType: TEXT', () => {
     await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
     const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
     selectOptions[5].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test('Modifying operators of the same type do not modify values', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'equal',
+            property: 'text',
+            value: 'hello!'
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).exists()).toBe(true)
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    selectOptions[2].click()
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })

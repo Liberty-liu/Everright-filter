@@ -1,5 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`renderType: TEXT > Modifying operators of the same type do not modify values 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "not_equal",
+          "property": "text",
+          "value": "hello!",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: TEXT > operator: "style=none" 1`] = `
 {
   "filters": [
