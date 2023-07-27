@@ -115,4 +115,28 @@ describe('renderType: TIME', () => {
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
+  test.only('Modifying the operatorStyle from range to none', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'between',
+            property: 'time1',
+            value: [
+              '17:30:00',
+              '18:30:00'
+            ]
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    selectOptions[7].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
 })
