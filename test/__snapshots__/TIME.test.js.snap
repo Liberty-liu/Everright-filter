@@ -1,5 +1,26 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`renderType: TIME > Modifying the operatorStyle from none to range 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "between",
+          "property": "time0",
+          "value": [
+            "04:36",
+            "05:36",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: TIME > Modifying the operatorStyle from range to none 1`] = `
 {
   "filters": [

@@ -115,7 +115,7 @@ describe('renderType: TIME', () => {
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
-  test.only('Modifying the operatorStyle from range to none', async () => {
+  test('Modifying the operatorStyle from range to none', async () => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
       filters: [{
         conditions: [
@@ -137,6 +137,49 @@ describe('renderType: TIME', () => {
     const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
     selectOptions[7].click()
     await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test('Modifying the operatorStyle from none to range', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'empty',
+            property: 'time0'
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    selectOptions[6].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    await new Promise(resolve => setTimeout(resolve, 100))
+    const timeElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TIMETYPE}-picker`, 'id'))
+    expect(timeElm.classes()).toContain('ERFILTER-ERROR')
+    await timeElm.find('input').trigger('input')
+    timeElm.find('input').trigger('blur')
+    timeElm.find('input').trigger('focus')
+    await nextTick()
+    const [
+      startHoursEl,
+      startMinutesEl,
+      endHoursEl,
+      endMinutesEl] = document.querySelectorAll(`${utils.getTestId(`${NAME.TIMETYPE}-popperClass`, 'id')} .el-time-spinner__list`)
+    startHoursEl.querySelectorAll('.el-time-spinner__item')[4].click()
+    await nextTick()
+    startMinutesEl.querySelectorAll('.el-time-spinner__item')[36].click()
+    await nextTick()
+    endHoursEl.querySelectorAll('.el-time-spinner__item')[5].click()
+    await nextTick()
+    endMinutesEl.querySelectorAll('.el-time-spinner__item')[36].click()
+    await nextTick()
+    await nextTick()
+    document.querySelector(utils.getTestId(`${NAME.TIMETYPE}-popperClass`, 'id')).querySelector('.el-time-panel__btn.confirm').click()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
 })
