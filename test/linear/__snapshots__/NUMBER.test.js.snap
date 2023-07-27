@@ -17,3 +17,24 @@ exports[`renderType: NUMBER > operator: "style=noop" && value is not empty 1`] =
   "logicalOperator": "and",
 }
 `;
+
+exports[`renderType: NUMBER > operator: "style=range" && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "between",
+          "property": "rating",
+          "value": [
+            10,
+            20,
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
