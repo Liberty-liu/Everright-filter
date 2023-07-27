@@ -21,6 +21,27 @@ exports[`renderType: SELECT > Modifying operators of the same type do not modify
 }
 `;
 
+exports[`renderType: SELECT > Modifying the operatorStyle from none to tags 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "one_of",
+          "property": "Gender11111",
+          "value": [
+            "0",
+            "1",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: SELECT > operator: "style=none" 1`] = `
 {
   "filters": [
