@@ -158,7 +158,7 @@ describe('renderType: SELECT', () => {
     expect(selectOptions[2].className).toContain('is-disabled')
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
-  test.only('Modifying the operatorStyle from tags to none', async () => {
+  test('Modifying the operatorStyle from tags to none', async () => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
       filters: [{
         conditions: [
