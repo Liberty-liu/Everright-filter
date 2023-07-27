@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderType: TIME > operator: "style=noop" && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "equal",
+          "property": "time0",
+          "value": "04:36",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
