@@ -37,12 +37,13 @@ const filterMethod = (node, keyword) => {
 </script>
 <template>
   <el-cascader
-    :class="[ns.b()]"
+    :class="[ns.b(), utils.addTestId(NAME.TRIGGERCOMPONENT, 'id')]"
     ref="element"
     :checkStrictly="true"
     :model-value="modelValue"
     filterable
     :filter-method="filterMethod"
+    :popperClass="utils.addTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')"
     @change="handleChange"
     :props="{
         emitPath: false

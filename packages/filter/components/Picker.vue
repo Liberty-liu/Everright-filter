@@ -223,7 +223,7 @@ if (/^quick-search$/.test(ER.props.type)) {
 }
 </script>
 <template>
-  <div :class="[ns.b()]">
+  <div :class="[ns.b()]" v-bind="!props.isConstraint ? utils.addTestId(`${NAME.PICKERCOMPONENT}-${props.index}`) : {}">
     <div v-if="ER.props.type === 'quick-filter'">
       {{ lang === 'zh-cn' ? params.label : params.en_label}}
     </div>

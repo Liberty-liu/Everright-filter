@@ -4,8 +4,16 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import eslintPlugin from 'vite-plugin-eslint'
 export default defineConfig({
+  test: {
+    environment: 'jsdom',
+    threads: false,
+    clearMocks: true,
+    setupFiles: ['./vitest.setup.js'],
+    transformMode: {
+      web: [/\.[jt]sx$/]
+    }
+  },
   base: './',
-  define: { 'process.env.NODE_ENV': '"production"' },
   build: {
     lib: {
       entry: resolve(__dirname, 'packages/filter/index.js'),
@@ -34,6 +42,10 @@ export default defineConfig({
       {
         find: '@ER-examples',
         replacement: resolve(__dirname, 'examples')
+      },
+      {
+        find: '@ER-server',
+        replacement: resolve(__dirname, 'server')
       }
     ]
   },
