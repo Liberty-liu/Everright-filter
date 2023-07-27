@@ -1,5 +1,23 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`renderType: NUMBER > Modifying operators of the same type do not modify values 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "greater_than",
+          "property": "rating",
+          "value": 2000,
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: NUMBER > operator: "style=none" 1`] = `
 {
   "filters": [
