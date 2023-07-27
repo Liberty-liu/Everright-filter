@@ -43,7 +43,7 @@ describe('renderType: SELECT', () => {
   afterEach(() => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.clearData()
   })
-  test.only('operator: "style=noop" && params: ["multiple = true", "multipleLimit = 2"] && value is not empty', async () => {
+  test('operator: "style=noop" && params: ["multiple = true", "multipleLimit = 2"] && value is not empty', async () => {
     await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
     document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
     await nextTick()
@@ -72,6 +72,22 @@ describe('renderType: SELECT', () => {
     await nextTick()
     selectOptions = getSelectOptions(utils.getTestId(`${NAME.SELECTTYPE}-popperClass`, 'id'))
     expect(selectOptions[2].className).toContain('is-disabled')
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test.only('operator: "style=noop" && params: ["multiple = false", "multipleLimit = 2"] && value is not empty', async () => {
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
+    await nextTick()
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-menu')[1].querySelectorAll('.el-cascader-node')[3].click()
+    await flushPromises()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    await new Promise(resolve => setTimeout(resolve, 100))
+    const selectElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.SELECTTYPE}`, 'id'))
+    expect(selectElm.classes()).toContain('ERFILTER-ERROR')
+    selectElm.find('.select-trigger').trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId(`${NAME.SELECTTYPE}-popperClass`, 'id'))
+    selectOptions[0].click()
+    await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
 })
