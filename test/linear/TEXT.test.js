@@ -80,7 +80,7 @@ describe('renderType: TEXT', () => {
     await inputWrapper.trigger('input')
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
-  test.only('operator: "style=one_of" && value is not empty', async () => {
+  test('operator: "style=one_of" && value is not empty', async () => {
     await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
     document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
     await nextTick()
@@ -110,6 +110,18 @@ describe('renderType: TEXT', () => {
     vi.useFakeTimers()
     await inputWrapper.trigger('input')
     getSelectOptions(utils.getTestId(`${NAME.TEXTTYPE}-select-popperClass`, 'id'))[0].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test.only('operator: "style=none"', async () => {
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
+    await nextTick()
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-menu')[1].querySelectorAll('.el-cascader-node')[5].click()
+    await flushPromises()
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    selectOptions[5].click()
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
