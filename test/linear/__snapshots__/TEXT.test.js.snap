@@ -18,6 +18,26 @@ exports[`renderType: TEXT > Modifying operators of the same type do not modify v
 }
 `;
 
+exports[`renderType: TEXT > Modifying the operatorStyle from none to tags 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "one_of",
+          "property": "text",
+          "value": [
+            "1",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: TEXT > operator: "style=none" 1`] = `
 {
   "filters": [

@@ -148,4 +148,45 @@ describe('renderType: TEXT', () => {
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
+  test('Modifying the operatorStyle from none to tags', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'empty',
+            property: 'text'
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    expect(selectOptions.map(e => utils.getAttrs(e).value)).toEqual([
+      'equal',
+      'one_of',
+      'not_equal',
+      'contains',
+      'not_contain',
+      'empty',
+      'not_empty'
+    ])
+    selectOptions[1].click()
+    await nextTick()
+    let selectElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TEXTTYPE}-select`, 'id'))
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    await new Promise(resolve => setTimeout(resolve, 100))
+    selectElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TEXTTYPE}-select`, 'id'))
+    expect(selectElm.classes()).toContain('ERFILTER-ERROR')
+    const inputWrapper = selectElm.find('.el-select__input')
+    const selectInputEl = inputWrapper.element
+    selectInputEl.value = '1'
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await inputWrapper.trigger('input')
+    getSelectOptions(utils.getTestId(`${NAME.TEXTTYPE}-select-popperClass`, 'id'))[0].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
 })
