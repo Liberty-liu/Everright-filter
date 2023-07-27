@@ -70,7 +70,8 @@ defineExpose({
   <el-select
     v-loading="state.loading"
     v-if="state.isChanged"
-    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
+    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.SELECTTYPE}`, 'id') ]"
+    :popperClass="utils.addTestId(`${NAME.SELECTTYPE}-popperClass`, 'id')"
     v-model="state.value0"
     :multiple="isMultiple"
     :multiple-limit="params.multipleLimit || 200"
