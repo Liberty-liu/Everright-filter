@@ -6,6 +6,7 @@ import { helpers } from '@vuelidate/validators'
 import DateComponent from '../components/Date.vue'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.DATETYPE
 }
@@ -80,7 +81,8 @@ const options0 = computed(() => {
     <el-select
       :placeholder="t('er.public.select')"
       v-if="state.isChanged"
-      :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
+      :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range'), utils.addTestId(`${NAME.DATETYPE}-start`, 'id') ]"
+      :popperClass="utils.addTestId(`${NAME.DATETYPE}-start-popperClass`, 'id')"
       v-model="state.value0"
       filterable
       clearable
@@ -89,13 +91,18 @@ const options0 = computed(() => {
         v-for="item in options0"
         :key="item.value"
         :label="item.label"
-        :value="item.value"/>
+        :value="item.value"
+        v-bind="utils.addAttrs({
+          value: item.value
+        })"
+      />
     </el-select>
     <template v-if="isRange">
       <span>-</span>
       <el-select
         :placeholder="t('er.public.select')"
-        :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
+        :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range'), utils.addTestId(`${NAME.DATETYPE}-end`, 'id') ]"
+        :popperClass="utils.addTestId(`${NAME.DATETYPE}-end-popperClass`, 'id')"
         v-if="state.isChanged"
         v-model="state.value1"
         filterable
@@ -105,7 +112,11 @@ const options0 = computed(() => {
           v-for="item in options0"
           :key="item.value"
           :label="item.label"
-          :value="item.value"/>
+          :value="item.value"
+          v-bind="utils.addAttrs({
+            value: item.value
+          })"
+        />
       </el-select>
     </template>
   </template>

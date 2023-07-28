@@ -3,12 +3,14 @@ import { ref, computed, nextTick, reactive, inject, unref, watch, toRefs } from 
 import _ from 'lodash-es'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.TIMETYPE,
   inheritAttrs: false
 }
 </script>
 <script setup>
+const isTest = process.env.NODE_ENV === 'test'
 const props = defineProps(['id', 'operatorStyle', 'params', 'property'])
 const ER = inject('Everright')
 const {
@@ -49,12 +51,13 @@ defineExpose({
 </script>
 <template>
   <el-time-picker
-    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
+    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.TIMETYPE}-picker`, 'id') ]"
+    :popperClass="utils.addTestId(`${NAME.TIMETYPE}-popperClass`, 'id')"
     v-if="state.isChanged"
     :is-range="isRange"
     v-model="state.value0"
     :format="params.format || 'HH:mm'"
-    arrow-control
+    :arrow-control="!isTest"
     :placeholder="t('er.public.select')"
     :valueFormat="params.format"
   />

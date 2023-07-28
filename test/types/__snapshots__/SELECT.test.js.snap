@@ -1,0 +1,116 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderType: SELECT > Modifying operators of the same type do not modify values 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "one_of",
+          "property": "Gender",
+          "value": [
+            "0",
+            "1",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: SELECT > Modifying the operatorStyle from none to tags 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "one_of",
+          "property": "Gender11111",
+          "value": [
+            "0",
+            "1",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: SELECT > Modifying the operatorStyle from tags to none 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "empty",
+          "property": "Gender",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: SELECT > operator: "style=none" 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "empty",
+          "property": "Gender11111",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: SELECT > operator: "style=noop" && params: ["multiple = false", "multipleLimit = 2"] && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "equal",
+          "property": "Gender11111",
+          "value": "0",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: SELECT > operator: "style=noop" && params: ["multiple = true", "multipleLimit = 2"] && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "equal",
+          "property": "Gender",
+          "value": [
+            "0",
+            "1",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;

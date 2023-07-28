@@ -3,6 +3,7 @@ import { ref, computed, nextTick, reactive, inject, unref, watch, toRefs } from 
 import _ from 'lodash-es'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.TEXTTYPE
 }
@@ -58,7 +59,8 @@ defineExpose({
 <template>
   <el-select
     :placeholder="t('er.public.PleaseEnter')"
-    :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
+    :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.TEXTTYPE}-select`, 'id')]"
+    :popperClass="utils.addTestId(`${NAME.TEXTTYPE}-select-popperClass`, 'id')"
     v-model="state.value1"
     v-if="isTags"
     multiple
@@ -81,6 +83,6 @@ defineExpose({
     clearable
     @change="handleCurrentChange"
     v-else
-    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
+    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.TEXTTYPE}-input`, 'id')]"
     v-model="state.value0"/>
 </template>

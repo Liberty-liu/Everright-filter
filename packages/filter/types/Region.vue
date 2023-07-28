@@ -4,6 +4,7 @@ import _ from 'lodash-es'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
 import { EverrightRegion } from '@ER/region'
+import utils from '@ER/utils'
 export default {
   name: NAME.REGIONTYPE,
   inheritAttrs: false
@@ -49,7 +50,8 @@ defineExpose({
 </script>
 <template>
   <EverrightRegion
-    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
+    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.REGIONTYPE}`, 'id') ]"
+    :popperClass="utils.addTestId(`${NAME.REGIONTYPE}-popperClass`, 'id')"
     v-if="state.isChanged"
     v-model="state.value0"
     :multiple="isMultiple"

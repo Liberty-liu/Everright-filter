@@ -1,0 +1,265 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderType: DATE > Default full function && operator: "style=none" 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "empty",
+          "property": "Date0",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Default full function 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date0",
+          "value": {
+            "dateType": "static",
+            "value": "1690473600",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Default full function 2`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date0",
+          "value": {
+            "dateFrom": "- 0 days",
+            "dateTo": "- 0 days",
+            "dateType": "dynamic",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Default full function 3`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date0",
+          "value": {
+            "dateFrom": "- 2 days",
+            "dateTo": "- 0 days",
+            "dateType": "dynamic",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Default full function 4`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "year",
+          "operator": "equal",
+          "property": "Date0",
+          "value": 2023,
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Default full function 5`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "year",
+          "operator": "between",
+          "property": "Date0",
+          "value": [
+            2022,
+            2023,
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Exclude equal and date operators (date) 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "year",
+          "operator": "not_equal",
+          "property": "Date4",
+          "value": 2023,
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > dates 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date6",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1689852743",
+            ],
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > dates 2`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "between",
+          "property": "Date6",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1689852743",
+              "1689902350",
+            ],
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > datetime 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date7",
+          "value": {
+            "dateType": "static",
+            "value": "1690556400",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > datetime 2`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "between",
+          "property": "Date7",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1689852743",
+              "1689902350",
+            ],
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > only Exact Date 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date5",
+          "value": {
+            "dateType": "static",
+            "value": "1690473600",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;

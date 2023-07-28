@@ -3,6 +3,7 @@ import { ref, computed, nextTick, reactive, inject, unref, toRefs, watch } from 
 import _ from 'lodash-es'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.CASCADERTYPE
 }
@@ -127,7 +128,8 @@ const filterMethod = (node, keyword) => {
       v-model="state.value0" :options="state.options"
       v-if="state.isChanged"
       collapseTagsTooltip
-      :class="[ns.b(), ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
+      :class="[ns.b(), ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.CASCADERTYPE}`, 'id') ]"
+      :popperClass="utils.addTestId(`${NAME.CASCADERTYPE}-popperClass`, 'id')"
       ref="element"
       v-bind="componentProps"
     />

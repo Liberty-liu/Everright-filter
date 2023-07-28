@@ -23,6 +23,10 @@ const props = defineProps({
   selectType: {
     type: Number,
     default: 3
+  },
+  popperClass: {
+    type: String,
+    default: ''
   }
 })
 const emit = defineEmits(['update:modelValue', 'change'])
@@ -277,7 +281,7 @@ onMounted(() => {
   >
     <el-tooltip
       ref="tooltipRef"
-      :popper-class="[ns.e('dropdown')]"
+      :popper-class="[ns.e('dropdown'), popperClass]"
       effect="light"
       placement="bottom-start"
       :visible="state.popperVisible"

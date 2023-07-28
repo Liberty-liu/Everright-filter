@@ -38,7 +38,8 @@ watch(() => props.modelValue, (val, oldVal) => {
 <template>
   <template v-if="isDateType">
     <el-select
-      :class="[ns.e('width')]"
+      :class="[ns.e('width'), utils.addTestId('dateOperator', 'id')]"
+      :popperClass="utils.addTestId('dateOperator-popperClass', 'id')"
       v-model="state.value0"
       v-show="!(options[0].length === 1)"
       filterable>
@@ -47,18 +48,25 @@ watch(() => props.modelValue, (val, oldVal) => {
         :key="item.value"
         :label="item.label"
         :value="item.value"
+        v-bind="utils.addAttrs({
+          value: item.value
+        })"
       />
     </el-select>
   </template>
   <el-select
     v-model="state.value1"
-    :class="[ns.e('width')]"
+    :class="[ns.e('width'), utils.addTestId('operator', 'id')]"
+    :popperClass="utils.addTestId('operator-popperClass', 'id')"
     filterable>
     <el-option
       v-for="item in options[1]"
       :key="item.value"
       :label="utils.getLableByLang(item, lang)"
       :value="item.value"
+      v-bind="utils.addAttrs({
+        value: item.value
+      })"
     />
   </el-select>
 </template>

@@ -7,11 +7,13 @@ import DayHourComponent from './DayHour.vue'
 import { ClickOutside as vClickOutside } from 'element-plus'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.DATECOMPONENT
 }
 </script>
 <script setup>
+const isTest = process.env.NODE_ENV === 'test'
 const props = defineProps(['isRange', 'params', 'isShowSwitchButton', 'defaultValue', 'id', 'isConstraint'])
 const ER = inject('Everright')
 const ns = hooks.useNamespace(NAME.DATECOMPONENT)
@@ -222,12 +224,28 @@ if (_.isEmpty(ER.state.remoteData)) {
 const datePickerType = computed(() => {
   return props.isRange ? 'daterange' : _.get(unref(props.params), 'datePanel.pickerType', 'date')
 })
+if (isTest) {
+  onMounted(() => {
+    switch (datePickerType.value) {
+      case 'dates':
+        state.staticDate = ['1689852743']
+        break
+      case 'daterange':
+        state.staticDate = ['1689852743', '1689902350']
+        break
+      case 'datetime':
+        state.staticDate = '1690556400'
+        break
+    }
+  })
+}
 </script>
 <template>
   <el-popover
     placement="bottom"
     :width="720"
     ref="popoverRef"
+    :popperClass="utils.addTestId(`${NAME.DATECOMPONENT}-popperClass`, 'id')"
     trigger="click"
     :virtual-ref="buttonRef"
     virtual-triggering
@@ -238,7 +256,11 @@ const datePickerType = computed(() => {
         :class="[!!item.active && ns.is('active')]"
         v-for="(item, index) in shortcuts"
         :key="index"
-        v-show="!item.isShow">
+        v-show="!item.isShow"
+        v-bind="utils.addAttrs({
+          value: item.value
+        })"
+      >
         {{item.label}}
       </el-button>
     </div>
@@ -248,19 +270,29 @@ const datePickerType = computed(() => {
           v-if="item === 'intervalBefore'"
           v-model="state.dynamicDate.intervalBefore"
           @change="() => handleEvent('intervalBefore')"
+          a="20"
           :prependLabel="t(`er.${NAME.DATECOMPONENT}.last`)"
+          v-bind="utils.addAttrs({
+            value: item
+          })"
           :type="manualType"/>
         <DayHourComponent
           v-if="item === 'afterBefore'"
           v-model="state.dynamicDate.afterBefore"
           @change="() => handleEvent('afterBefore')"
           :prependLabel="t(`er.${NAME.DATECOMPONENT}.next`)"
+          v-bind="utils.addAttrs({
+            value: item
+          })"
           :type="manualType"/>
         <DayHourComponent
           v-if="item === 'erenowBefore'"
           :appendLabel="t(`er.${NAME.DATECOMPONENT}.ago`)"
           v-model="state.dynamicDate.erenowBefore"
           @change="() => handleEvent('erenowBefore')"
+          v-bind="utils.addAttrs({
+            value: item
+          })"
           :type="manualType"/>
         <DayHourComponent
           v-if="item === 'intervalBetween'"
@@ -268,6 +300,9 @@ const datePickerType = computed(() => {
           :isRange="true"
           v-model="state.dynamicDate.intervalBetween"
           @change="() => handleEvent('intervalBetween')"
+          v-bind="utils.addAttrs({
+            value: item
+          })"
           :type="manualType"/>
       </template>
       <div
@@ -294,7 +329,7 @@ const datePickerType = computed(() => {
     {{buttonText}}<el-icon><Calendar /></el-icon>
   </el-button>
   <el-date-picker
-    :class="[ns.e('width'), v$.staticDate.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
+    :class="[ns.e('width'), v$.staticDate.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.DATECOMPONENT}-picker`, 'id') ]"
     ref="staticDateRef"
     :type="datePickerType"
     v-if="state.absolute"

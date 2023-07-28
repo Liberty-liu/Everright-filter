@@ -5,6 +5,7 @@ import { useVuelidate } from '@vuelidate/core'
 import { helpers, required } from '@vuelidate/validators'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.NUMBERTYPE,
   inheritAttrs: false
@@ -49,7 +50,7 @@ defineExpose({
 </script>
 <template>
   <el-input-number
-    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
+    :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range'), utils.addTestId(`${NAME.NUMBERTYPE}-number0`, 'id')]"
     @blur="v$.value0.$touch()"
     v-model="state.value0"
     :max="params.max"
@@ -62,7 +63,7 @@ defineExpose({
     <div>-</div>
     <el-input-number
       @blur="v$.value1.$touch()"
-      :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
+      :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range'), utils.addTestId(`${NAME.NUMBERTYPE}-number1`, 'id')]"
       v-model="state.value1"
       :max="params.max"
       :min="params.min"
