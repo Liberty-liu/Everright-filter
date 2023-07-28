@@ -150,7 +150,7 @@ const handleEvent = (type) => {
 const handleListener = ({ type, data }) => {
   // console.log(type)
   if (type === 'init') {
-    handleEvent(1)
+    // handleEvent(1)
   }
   if (type === 'search') {
     handleEvent(3)
