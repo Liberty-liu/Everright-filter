@@ -21,3 +21,49 @@ exports[`renderType: DATE > Default full function 1`] = `
   "logicalOperator": "and",
 }
 `;
+
+exports[`renderType: DATE > Default full function 2`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date0",
+          "value": {
+            "dateFrom": "- 0 days",
+            "dateTo": "- 0 days",
+            "dateType": "dynamic",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Default full function 3`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date0",
+          "value": {
+            "dateFrom": "- 2 days",
+            "dateTo": "- 0 days",
+            "dateType": "dynamic",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;

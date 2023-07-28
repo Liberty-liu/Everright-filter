@@ -1,5 +1,5 @@
 import { describe, assert, expect, test, beforeEach, afterEach, beforeAll, vi } from 'vitest'
-import { flushPromises, config } from '@vue/test-utils'
+import { flushPromises, config, DOMWrapper } from '@vue/test-utils'
 import optionData from '@ER-server/routes/Filter/data/options.js'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import NAME from '@ER/filter/name.js'
@@ -34,7 +34,7 @@ describe('renderType: DATE', () => {
   afterEach(() => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.clearData()
   })
-  test.only('Default full function', async () => {
+  test('Default full function', async () => {
     await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
     document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
     await nextTick()
@@ -74,6 +74,16 @@ describe('renderType: DATE', () => {
     await nextTick()
     const datePickerEl = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.DATECOMPONENT}-picker`, 'id'))
     datePickerEl.find('.el-input__inner').setValue('2023-07-28')
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+    document.querySelector(utils.getTestId(`${NAME.DATECOMPONENT}-popperClass`, 'id')).querySelector('.Everright-filter-DateComponent__absolute button').click()
+    await nextTick()
+    document.querySelector(utils.getTestId(`${NAME.DATECOMPONENT}-popperClass`, 'id')).querySelector('.Everright-filter-DateComponent__shortcuts').querySelectorAll('button')[0].click()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+    document.querySelector(utils.getTestId(`${NAME.DATECOMPONENT}-popperClass`, 'id')).querySelector('.Everright-filter-DateComponent__absolute button').click()
+    await nextTick()
+    const intervalBeforeEl = new DOMWrapper(document.querySelector(utils.getTestId(`${NAME.DATECOMPONENT}-popperClass`, 'id')).querySelector('.Everright-filter-DateComponent__manuals').querySelectorAll('.Everright-filter-DayHourComponent')[0].querySelector('.el-input__inner'))
+    intervalBeforeEl.setValue('2')
+    await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
 })
