@@ -122,6 +122,7 @@ const itemLabel = computed(() => {
         <el-button
           v-if="isInConstraint ? true : ER.isShowAdd.value"
           :class="[ns.e('add')]"
+          v-bind="utils.addTestId('addCondition')"
           @click="addRule"
           link
         >{{isInConstraint ? t(`er.${NAME.FILTERITEM}.addProp`) : t(`er.${NAME.FILTERITEM}.addCondition`)}}</el-button>

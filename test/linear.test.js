@@ -33,6 +33,9 @@ describe('type: linear', () => {
   })
   afterEach(() => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.clearData()
+    wrapper.setProps({
+      ruleLimit: -1
+    })
   })
   test('method: pushData', async () => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.pushData('text')
@@ -99,5 +102,13 @@ describe('type: linear', () => {
     expect(wrapper.find('.Everright-filter-FilterItem').find(utils.getTestId(`${NAME.LOGICALOPERATORCOMPONENT}`)).exists()).toBe(true)
     await wrapper.find('.Everright-filter-FilterItem').find(utils.getTestId(`${NAME.LOGICALOPERATORCOMPONENT}`)).find('.el-switch__core').trigger('click')
     expect(_.get(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData(), 'filters.0.logicalOperator', 'and')).toBe('or')
+  })
+  test('ruleLimit: 2', async () => {
+    wrapper.setProps({
+      ruleLimit: 2
+    })
+    expect(wrapper.find(utils.getTestId('addCondition')).exists()).toBe(true)
+    await wrapper.find(utils.getTestId('addCondition')).trigger('click')
+    expect(wrapper.find(utils.getTestId('addCondition')).exists()).toBe(false)
   })
 })
