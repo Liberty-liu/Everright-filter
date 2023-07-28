@@ -14,5 +14,6 @@ export default {
   CASCADERTYPE: 'CascaderType',
   DATECOMPONENT: 'DateComponent',
   CONSTRAINTCOMPONENT: 'ConstraintComponent',
-  DAYHOURCOMPONENT: 'DayHourComponent'
+  DAYHOURCOMPONENT: 'DayHourComponent',
+  LOGICALOPERATORCOMPONENT: 'LogicalOperatorComponent'
 }

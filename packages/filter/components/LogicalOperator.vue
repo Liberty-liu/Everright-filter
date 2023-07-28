@@ -4,8 +4,10 @@ import { ref, computed, nextTick, reactive, inject } from 'vue'
 import _ from 'lodash-es'
 import { useVuelidate } from '@vuelidate/core'
 import { required } from '@vuelidate/validators'
+import NAME from '@ER/filter/name.js'
+import utils from '@ER/utils'
 export default {
-  name: 'LogicalOperatorComponent'
+  name: NAME.LOGICALOPERATORCOMPONENT
 }
 </script>
 <script setup>
@@ -28,6 +30,7 @@ const value = computed({
 <template>
   <div :class="[ns.b()]" :style="{ height: height + 'px'}">
     <el-switch
+      v-bind="utils.addTestId(NAME.LOGICALOPERATORCOMPONENT)"
       v-model="value"
       inline-prompt
       style="--el-switch-on-color: #FF7B48; --el-switch-off-color: #4176FF"

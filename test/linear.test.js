@@ -4,6 +4,7 @@ import optionData from '@ER-server/routes/Filter/data/options.js'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import NAME from '@ER/filter/name.js'
 import utils from '@ER/utils'
+import _ from 'lodash-es'
 import { nextTick } from 'vue'
 import { getSelectOptions, _mount } from './utils.js'
 config.global.components.Delete = ElementPlusIconsVue.Delete
@@ -74,5 +75,29 @@ describe('type: linear', () => {
     expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).exists()).toBe(true)
     expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).exists()).toBe(false)
     expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TEXTTYPE}-input`, 'id')).exists()).toBe(false)
+  })
+  test('change: logicalOperator', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'equal',
+            property: 'text',
+            value: 'hello!'
+          },
+          {
+            operator: 'equal',
+            property: 'text',
+            value: 'hello!'
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    expect(wrapper.find('.Everright-filter-FilterItem').find(utils.getTestId(`${NAME.LOGICALOPERATORCOMPONENT}`)).exists()).toBe(true)
+    await wrapper.find('.Everright-filter-FilterItem').find(utils.getTestId(`${NAME.LOGICALOPERATORCOMPONENT}`)).find('.el-switch__core').trigger('click')
+    expect(_.get(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData(), 'filters.0.logicalOperator', 'and')).toBe('or')
   })
 })
