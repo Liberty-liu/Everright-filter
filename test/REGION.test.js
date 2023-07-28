@@ -111,7 +111,7 @@ describe('renderType: REGION', () => {
         conditions: [
           {
             operator: 'one_of',
-            property: 'region',
+            property: 'Region',
             value: [
               '110000',
               '120000'
@@ -127,6 +127,39 @@ describe('renderType: REGION', () => {
     const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
     selectOptions[5].click()
     await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test('Modifying the operatorStyle from none to tags', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'empty',
+            property: 'Region'
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    const selectOptions = getSelectOptions(utils.getTestId('operator-popperClass', 'id'))
+    selectOptions[1].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    await new Promise(resolve => setTimeout(resolve, 100))
+    const regionElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.REGIONTYPE}`, 'id'))
+    expect(regionElm.classes()).toContain('ERFILTER-ERROR')
+    await regionElm.trigger('click')
+    // expect(document.querySelector(utils.getTestId(`${NAME.REGIONTYPE}-popperClass`, 'id')).style.display).toBe('none')
+    expect(document.querySelector(utils.getTestId(`${NAME.REGIONTYPE}-popperClass`, 'id')).querySelectorAll('.el-tab-pane')[0].querySelectorAll('li')[0].querySelector('.el-checkbox').className).not.toContain('is-checked')
+    document.querySelector(utils.getTestId(`${NAME.REGIONTYPE}-popperClass`, 'id')).querySelectorAll('.el-tab-pane')[0].querySelectorAll('li')[0].querySelector('.el-checkbox').click()
+    await nextTick()
+    expect(document.querySelector(utils.getTestId(`${NAME.REGIONTYPE}-popperClass`, 'id')).querySelectorAll('.el-tab-pane')[0].querySelectorAll('li')[0].querySelector('.el-checkbox').className).toContain('is-checked')
+    document.querySelector(utils.getTestId(`${NAME.REGIONTYPE}-popperClass`, 'id')).querySelectorAll('.el-tab-pane')[0].querySelectorAll('li')[0].click()
+    await nextTick()
+    expect(document.querySelector(utils.getTestId(`${NAME.REGIONTYPE}-popperClass`, 'id')).querySelectorAll('.el-tab-pane')[1].querySelectorAll('.el-checkbox.is-disabled').length).toBe(1)
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
 })

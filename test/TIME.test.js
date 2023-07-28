@@ -182,7 +182,7 @@ describe('renderType: TIME', () => {
     document.querySelector(utils.getTestId(`${NAME.TIMETYPE}-popperClass`, 'id')).querySelector('.el-time-panel__btn.confirm').click()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
-  test.only('Modifying operators of the same type do not modify values', async () => {
+  test('Modifying operators of the same type do not modify values', async () => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
       filters: [{
         conditions: [
