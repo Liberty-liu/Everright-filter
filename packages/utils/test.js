@@ -1,5 +1,5 @@
 const addTestId = (id, type = 'attr') => {
-  let result = type === 'attr' ? {} : ''
+  let result = ''
   if (process.env.NODE_ENV === 'test') {
     if (type === 'attr') {
       result = { 'data-test-id': `er-filter-${id}` }

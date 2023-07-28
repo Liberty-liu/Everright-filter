@@ -85,7 +85,7 @@ window.ERfilterRef = ERfilterRef
 const state = reactive({
   value0: {},
   // type: 'quick-search'
-  type: 'linear'
+  type: 'matrix'
   // type: 'matrix'
   // type: 'quick-filter'
 })
@@ -119,7 +119,38 @@ const handleEvent = (type) => {
   switch (type) {
     case 1:
       if (state.type === 'matrix') {
-        unref(ERfilterRef).setData(matrixData)
+        unref(ERfilterRef).setData({
+          filters: [{
+            conditions: [
+              {
+                operator: 'equal',
+                property: 'text',
+                value: 'hello!'
+              },
+              {
+                operator: 'equal',
+                property: 'text',
+                value: 'hello!'
+              }
+            ],
+            logicalOperator: 'and'
+          }, {
+            conditions: [
+              {
+                operator: 'equal',
+                property: 'text',
+                value: 'hello!'
+              },
+              {
+                operator: 'equal',
+                property: 'text',
+                value: 'hello!'
+              }
+            ],
+            logicalOperator: 'and'
+          }],
+          logicalOperator: 'and'
+        })
       }
       if (state.type === 'linear') {
         unref(ERfilterRef).setData(linearData)
