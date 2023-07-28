@@ -48,6 +48,9 @@ watch(() => props.modelValue, (val, oldVal) => {
         :key="item.value"
         :label="item.label"
         :value="item.value"
+        v-bind="utils.addAttrs({
+          value: item.value
+        })"
       />
     </el-select>
   </template>

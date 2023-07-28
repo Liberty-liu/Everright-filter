@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`renderType: DATE > Default full function 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date0",
+          "value": {
+            "dateType": "static",
+            "value": "1690473600",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;

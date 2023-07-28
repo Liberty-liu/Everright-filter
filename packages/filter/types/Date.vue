@@ -80,7 +80,8 @@ const options0 = computed(() => {
     <el-select
       :placeholder="t('er.public.select')"
       v-if="state.isChanged"
-      :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
+      :class="[ns.e('width'), v$.value0.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range'), utils.addTestId(`${NAME.DATETYPE}-start`, 'id') ]"
+      :popperClass="utils.addTestId(`${NAME.DATETYPE}-start-popperClass`, 'id')"
       v-model="state.value0"
       filterable
       clearable
@@ -95,7 +96,8 @@ const options0 = computed(() => {
       <span>-</span>
       <el-select
         :placeholder="t('er.public.select')"
-        :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range') ]"
+        :class="[ns.e('width'), v$.value1.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', isRange && ns.is('range'), utils.addTestId(`${NAME.DATETYPE}-end`, 'id') ]"
+        :popperClass="utils.addTestId(`${NAME.DATETYPE}-end-popperClass`, 'id')"
         v-if="state.isChanged"
         v-model="state.value1"
         filterable
