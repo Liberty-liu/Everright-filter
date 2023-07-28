@@ -17,3 +17,24 @@ exports[`renderType: CASCADER > operator: "style=noop" && params: ["multiple = f
   "logicalOperator": "and",
 }
 `;
+
+exports[`renderType: CASCADER > operator: "style=noop" && params: ["multiple = true"] && value is not empty 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "equal",
+          "property": "cascader02",
+          "value": [
+            "any",
+            "name",
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
