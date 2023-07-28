@@ -170,6 +170,31 @@ exports[`renderType: DATE > dates 1`] = `
 }
 `;
 
+exports[`renderType: DATE > dates 2`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "between",
+          "property": "Date6",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1689852743",
+              "1689902350",
+            ],
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: DATE > only Exact Date 1`] = `
 {
   "filters": [

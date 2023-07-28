@@ -226,10 +226,12 @@ const datePickerType = computed(() => {
 })
 if (isTest) {
   onMounted(() => {
-    console.log(datePickerType.value)
     switch (datePickerType.value) {
       case 'dates':
         state.staticDate = ['1689852743']
+        break
+      case 'daterange':
+        state.staticDate = ['1689852743', '1689902350']
         break
     }
   })

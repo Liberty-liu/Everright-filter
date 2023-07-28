@@ -171,5 +171,8 @@ describe('renderType: DATE', () => {
     const datePickerEl = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.DATECOMPONENT}-picker`, 'id'))
     expect(datePickerEl.exists()).toBe(true)
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+    getSelectOptions(utils.getTestId('operator-popperClass', 'id'))[6].click()
+    await new Promise(resolve => setTimeout(resolve, 100))
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
 })
