@@ -5,7 +5,7 @@ import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 import NAME from '@ER/filter/name.js'
 import utils from '@ER/utils'
 import { nextTick } from 'vue'
-import { getSelectOptions, _mount } from './utils.js'
+import { getSelectOptions, _mount } from '../utils.js'
 config.global.components.Delete = ElementPlusIconsVue.Delete
 const getOptions = async () => {
   return new Promise((resolve, reject) => {

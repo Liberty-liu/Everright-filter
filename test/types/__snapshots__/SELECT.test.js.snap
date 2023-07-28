@@ -114,21 +114,3 @@ exports[`renderType: SELECT > operator: "style=noop" && params: ["multiple = tru
   "logicalOperator": "and",
 }
 `;
-
-exports[`renderType: TIME > Modifying operators of the same type do not modify values 1`] = `
-{
-  "filters": [
-    {
-      "conditions": [
-        {
-          "operator": "greater_than",
-          "property": "time0",
-          "value": "04:36",
-        },
-      ],
-      "logicalOperator": "and",
-    },
-  ],
-  "logicalOperator": "and",
-}
-`;
