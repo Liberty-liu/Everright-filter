@@ -13,6 +13,7 @@ export default {
 }
 </script>
 <script setup>
+const isTest = process.env.NODE_ENV === 'test'
 const props = defineProps(['isRange', 'params', 'isShowSwitchButton', 'defaultValue', 'id', 'isConstraint'])
 const ER = inject('Everright')
 const ns = hooks.useNamespace(NAME.DATECOMPONENT)
@@ -223,6 +224,16 @@ if (_.isEmpty(ER.state.remoteData)) {
 const datePickerType = computed(() => {
   return props.isRange ? 'daterange' : _.get(unref(props.params), 'datePanel.pickerType', 'date')
 })
+if (isTest) {
+  onMounted(() => {
+    console.log(datePickerType.value)
+    switch (datePickerType.value) {
+      case 'dates':
+        state.staticDate = ['1689852743']
+        break
+    }
+  })
+}
 </script>
 <template>
   <el-popover

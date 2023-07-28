@@ -146,6 +146,30 @@ exports[`renderType: DATE > Exclude equal and date operators (date) 1`] = `
 }
 `;
 
+exports[`renderType: DATE > dates 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date6",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1689852743",
+            ],
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: DATE > only Exact Date 1`] = `
 {
   "filters": [
