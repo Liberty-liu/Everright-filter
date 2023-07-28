@@ -122,4 +122,33 @@ describe('renderType: DATE', () => {
     await nextTick()
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
   })
+  test('Exclude equal and date operators (date)', async () => {
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find('.Everright-filter-TriggerComponent').trigger('click')
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-node')[0].click()
+    await nextTick()
+    document.querySelector(utils.getTestId(`${NAME.TRIGGERCOMPONENT}-popperClass`, 'id')).querySelectorAll('.el-cascader-menu')[1].querySelectorAll('.el-cascader-node')[13].click()
+    await flushPromises()
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('dateOperator', 'id')).exists()).toBe(true)
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).trigger('click')
+    expect(getSelectOptions(utils.getTestId('operator-popperClass', 'id')).map(e => utils.getAttrs(e).value)).toEqual([
+      'not_equal',
+      'greater_than',
+      'greater_than_equal',
+      'less_than',
+      'less_than_equal',
+      'between',
+      'empty',
+      'not_empty'
+    ])
+    await wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('dateOperator', 'id')).trigger('click')
+    expect(getSelectOptions(utils.getTestId('dateOperator-popperClass', 'id')).map(e => utils.getAttrs(e).value)).toEqual(['year', 'month', 'day'])
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    await new Promise(resolve => setTimeout(resolve, 100))
+    const selectElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.DATETYPE}-start`, 'id'))
+    expect(selectElm.classes()).toContain('ERFILTER-ERROR')
+    getSelectOptions(utils.getTestId(`${NAME.DATETYPE}-start-popperClass`, 'id')).filter(e => utils.getAttrs(e).value === 2023)[0].click()
+    await nextTick()
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
 })

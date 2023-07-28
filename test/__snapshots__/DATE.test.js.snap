@@ -126,3 +126,22 @@ exports[`renderType: DATE > Default full function 5`] = `
   "logicalOperator": "and",
 }
 `;
+
+exports[`renderType: DATE > Exclude equal and date operators (date) 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "year",
+          "operator": "not_equal",
+          "property": "Date4",
+          "value": 2023,
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
