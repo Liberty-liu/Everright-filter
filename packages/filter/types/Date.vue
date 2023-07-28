@@ -6,6 +6,7 @@ import { helpers } from '@vuelidate/validators'
 import DateComponent from '../components/Date.vue'
 import NAME from '@ER/filter/name.js'
 import hooks from '@ER/hooks'
+import utils from '@ER/utils'
 export default {
   name: NAME.DATETYPE
 }
@@ -90,7 +91,11 @@ const options0 = computed(() => {
         v-for="item in options0"
         :key="item.value"
         :label="item.label"
-        :value="item.value"/>
+        :value="item.value"
+        v-bind="utils.addAttrs({
+          value: item.value
+        })"
+      />
     </el-select>
     <template v-if="isRange">
       <span>-</span>
@@ -107,7 +112,11 @@ const options0 = computed(() => {
           v-for="item in options0"
           :key="item.value"
           :label="item.label"
-          :value="item.value"/>
+          :value="item.value"
+          v-bind="utils.addAttrs({
+            value: item.value
+          })"
+        />
       </el-select>
     </template>
   </template>

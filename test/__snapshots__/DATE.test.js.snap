@@ -85,3 +85,44 @@ exports[`renderType: DATE > Default full function 3`] = `
   "logicalOperator": "and",
 }
 `;
+
+exports[`renderType: DATE > Default full function 4`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "year",
+          "operator": "equal",
+          "property": "Date0",
+          "value": 2023,
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > Default full function 5`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "year",
+          "operator": "between",
+          "property": "Date0",
+          "value": [
+            2022,
+            2023,
+          ],
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
