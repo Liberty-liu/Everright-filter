@@ -81,6 +81,7 @@ const getConditions = async (params) => {
 }
 const lang = ref(localStorage.getItem('er-lang') || 'zh-cn')
 const ERfilterRef = ref(null)
+window.ERfilterRef = ERfilterRef
 const state = reactive({
   value0: {},
   // type: 'quick-search'
@@ -150,7 +151,7 @@ const handleEvent = (type) => {
 const handleListener = ({ type, data }) => {
   // console.log(type)
   if (type === 'init') {
-    // handleEvent(1)
+    handleEvent(1)
   }
   if (type === 'search') {
     handleEvent(3)

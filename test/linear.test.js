@@ -33,7 +33,7 @@ describe('type: linear', () => {
   afterEach(() => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.clearData()
   })
-  test.only('method: pushData', async () => {
+  test('method: pushData', async () => {
     wrapper.findComponent({ ref: 'ERfilterRef' }).vm.pushData('text')
     await new Promise(resolve => setTimeout(resolve, 100))
     let inputElm = wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TEXTTYPE}-input`, 'id'))
@@ -47,5 +47,32 @@ describe('type: linear', () => {
     nativeInput.value = '1'
     await inputWrapper.trigger('input')
     expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toMatchSnapshot()
+  })
+  test('method: clearData', async () => {
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.setData({
+      filters: [{
+        conditions: [
+          {
+            operator: 'equal',
+            property: 'text',
+            value: 'hello!'
+          }
+        ],
+        logicalOperator: 'and'
+      }],
+      logicalOperator: 'and'
+    })
+    await new Promise(resolve => setTimeout(resolve, 100))
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).exists()).toBe(true)
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.clearData('values')
+    await nextTick()
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).exists()).toBe(true)
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TEXTTYPE}-input`, 'id')).exists()).toBe(true)
+    expect(wrapper.findComponent({ ref: 'ERfilterRef' }).vm.getData()).toEqual({})
+    wrapper.findComponent({ ref: 'ERfilterRef' }).vm.clearData()
+    await nextTick()
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).exists()).toBe(true)
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId('operator', 'id')).exists()).toBe(false)
+    expect(wrapper.find(utils.getTestId(`${NAME.PICKERCOMPONENT}-0-0`)).find(utils.getTestId(`${NAME.TEXTTYPE}-input`, 'id')).exists()).toBe(false)
   })
 })
