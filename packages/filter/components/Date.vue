@@ -233,6 +233,9 @@ if (isTest) {
       case 'daterange':
         state.staticDate = ['1689852743', '1689902350']
         break
+      case 'datetime':
+        state.staticDate = '1690556400'
+        break
     }
   })
 }

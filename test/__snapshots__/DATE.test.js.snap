@@ -195,6 +195,53 @@ exports[`renderType: DATE > dates 2`] = `
 }
 `;
 
+exports[`renderType: DATE > datetime 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "equal",
+          "property": "Date7",
+          "value": {
+            "dateType": "static",
+            "value": "1690556400",
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
+exports[`renderType: DATE > datetime 2`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "dateOperator": "date",
+          "operator": "between",
+          "property": "Date7",
+          "value": {
+            "dateType": "static",
+            "value": [
+              "1689852743",
+              "1689902350",
+            ],
+          },
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: DATE > only Exact Date 1`] = `
 {
   "filters": [
