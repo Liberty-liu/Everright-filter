@@ -1,5 +1,22 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`renderType: REGION > operator: "style=none" 1`] = `
+{
+  "filters": [
+    {
+      "conditions": [
+        {
+          "operator": "empty",
+          "property": "Region",
+        },
+      ],
+      "logicalOperator": "and",
+    },
+  ],
+  "logicalOperator": "and",
+}
+`;
+
 exports[`renderType: REGION > operator: "style=noop" && value is not empty 1`] = `
 {
   "filters": [
