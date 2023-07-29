@@ -13,7 +13,7 @@ export default {
 }
 </script>
 <script setup>
-const isTest = process.env.NODE_ENV === 'test'
+const isTest = import.meta.env.MODE === 'test'
 const props = defineProps(['isRange', 'params', 'isShowSwitchButton', 'defaultValue', 'id', 'isConstraint'])
 const ER = inject('Everright')
 const ns = hooks.useNamespace(NAME.DATECOMPONENT)
@@ -318,7 +318,7 @@ if (isTest) {
         text
         @click="() => handleEvent('staticDate')"
       >
-        {{t(`er.${NAME.DATECOMPONENT}.absolute`)}}<el-icon><Calendar /></el-icon>
+        {{t(`er.${NAME.DATECOMPONENT}.absolute`)}}<el-icon><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M128 384v512h768V192H768v32a32 32 0 1 1-64 0v-32H320v32a32 32 0 0 1-64 0v-32H128v128h768v64H128zm192-256h384V96a32 32 0 1 1 64 0v32h160a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h160V96a32 32 0 0 1 64 0v32zm-32 384h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm192-192h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm192-192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64z"></path></svg></el-icon>
       </el-button>
     </div>
   </el-popover>
@@ -326,7 +326,7 @@ if (isTest) {
     v-if="!manuals.length && !shortcuts.length ? false : (isShowSwitchButton || !isRange)"
     :class="[ns.e('button'), v$.dynamicDate.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR' ]"
     ref="buttonRef">
-    {{buttonText}}<el-icon><Calendar /></el-icon>
+    {{buttonText}}<el-icon><svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" data-v-ea893728=""><path fill="currentColor" d="M128 384v512h768V192H768v32a32 32 0 1 1-64 0v-32H320v32a32 32 0 0 1-64 0v-32H128v128h768v64H128zm192-256h384V96a32 32 0 1 1 64 0v32h160a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h160V96a32 32 0 0 1 64 0v32zm-32 384h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm192-192h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm192-192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64zm0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64z"></path></svg></el-icon>
   </el-button>
   <el-date-picker
     :class="[ns.e('width'), v$.staticDate.$error && ER.props.isShowValidateState && 'ERFILTER-ERROR', utils.addTestId(`${NAME.DATECOMPONENT}-picker`, 'id') ]"

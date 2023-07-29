@@ -1,1 +1,1 @@
-import '@ER/theme/filter/index.scss'
+import 'virtual:style-module'

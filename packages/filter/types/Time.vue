@@ -10,7 +10,7 @@ export default {
 }
 </script>
 <script setup>
-const isTest = process.env.NODE_ENV === 'test'
+const isTest = import.meta.env.MODE === 'test'
 const props = defineProps(['id', 'operatorStyle', 'params', 'property'])
 const ER = inject('Everright')
 const {
