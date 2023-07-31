@@ -15,6 +15,7 @@
 [![nzh](https://img.shields.io/badge/nzh-%3E%3D%201.0.8-green.svg)](https://github.com/cnwhy/nzh.git)
 [![written-number](https://img.shields.io/badge/written--number-%3E%3D%200.11.1-green.svg)](https://github.com/yamadapc/js-written-number)
 [![vite](https://img.shields.io/badge/vite-%3E%3D%203.2.5-green.svg)](https://github.com/vitejs/vite.git)
+[![unplugin-vue-components](https://img.shields.io/badge/unplugin--vue--components-0.25.1-green.svg)](https://github.com/antfu/unplugin-vue-components)
 
 **[中文主页](https://everright.site/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/en/filter/introduction.html)**
 
@@ -32,6 +33,16 @@ Everright-filter是一个通过用户界面轻松生成任何类型的查询语�
 * 6.每个筛选类型单独抽离出来使用，可以轻松嵌入到不同的UI界面中。无论是搜索框、筛选面板还是表格的表头，everright-filter都能提供一致的功能和数据结构，无需为不同界面单独开发筛选功能，节省了开发资源和时间。
 * 7.开发人员可以根据文档UI界面轻松配置所需功能的数据结构，节省了繁琐的手动编码和调试过程。
 * 8.支持中文和英文
+
+## Explanation of the different builds
+In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) of the npm package you will find the different builds
+
+|   | Excludes element-plus(default)  | Includes element-plus(v2.3.3) |
+| ------------- | ------------- | ------------- |
+| UMD | EverrightFilter-without-element-plus.umd.cjs | EverrightFilter-with-element-plus.umd.cjs |
+| ES | EverrightFilter-without-element-plus.js | EverrightFilter-with-element-plus.js |
+| IIFE | EverrightFilter-without-element-plus.iife.js | EverrightFilter-with-element-plus.iife.js |
+| css | EverrightFilter-without-element-plus.css | EverrightFilter-with-element-plus.css |
 
 ## Docs
 

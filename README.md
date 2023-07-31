@@ -1,7 +1,7 @@
 <p align="center"><img height="200px" src="https://github.com/Liberty-liu/Liberty-liu/assets/21301475/0d71a431-d2d4-4f67-b8bb-d230f7dc258b"></p>
 <h1 align="center">Everright-filter</h1>
 
-[简体中文](./README.zh-cn.md) | English 
+[简体中文](./README.zh-cn.md) | English
 
 [![vue](https://img.shields.io/badge/vue-%3E%3D%203-green.svg)](https://vuejs.org/)
 [![element-plus](https://img.shields.io/badge/element--plus-%3E%3D%202.3.1-green.svg)](https://element-plus.gitee.io/)
@@ -15,6 +15,7 @@
 [![nzh](https://img.shields.io/badge/nzh-%3E%3D%201.0.8-green.svg)](https://github.com/cnwhy/nzh.git)
 [![written-number](https://img.shields.io/badge/written--number-%3E%3D%200.11.1-green.svg)](https://github.com/yamadapc/js-written-number)
 [![vite](https://img.shields.io/badge/vite-%3E%3D%203.2.5-green.svg)](https://github.com/vitejs/vite.git)
+[![unplugin-vue-components](https://img.shields.io/badge/unplugin--vue--components-0.25.1-green.svg)](https://github.com/antfu/unplugin-vue-components)
 
 **[中文主页](https://everright.site/filter/introduction.html)** | **[ENGLISH HOMEPAGE](https://everright.site/en/filter/introduction.html)**
 
@@ -32,6 +33,16 @@ Everright-filter is a user interface that easily generates any type of query sta
 * 6.Each filter type is extracted and used separately, and can be easily embedded into different UI interfaces. Whether it is a search box, a filter panel or a table header, everright-filter can provide consistent functions and data structures, eliminating the need to develop separate filter functions for different interfaces, saving development resources and time.
 * 7.Developers can easily configure the data structure of the required functions according to the document UI interface, saving the tedious manual coding and debugging process.
 * 8.Support Chinese and English
+
+## Explanation of the different builds
+In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) of the npm package you will find the different builds
+
+|   | Excludes element-plus(default)  | Includes element-plus(v2.3.3) |
+| ------------- | ------------- | ------------- |
+| UMD | EverrightFilter-without-element-plus.umd.cjs | EverrightFilter-with-element-plus.umd.cjs |
+| ES | EverrightFilter-without-element-plus.js | EverrightFilter-with-element-plus.js |
+| IIFE | EverrightFilter-without-element-plus.iife.js | EverrightFilter-with-element-plus.iife.js |
+| css | EverrightFilter-without-element-plus.css | EverrightFilter-with-element-plus.css |
 
 ## Docs
 
