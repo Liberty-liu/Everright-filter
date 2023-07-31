@@ -1,7 +1,7 @@
 {
   "name": "everright-filter",
-  "version": "1.1.0-beta.1",
-  "description": "🦮Vue3 query builder/filter builder ui component for building complex queries and filters with nested conditionals|Vue 高级筛选器组件",
+  "version": "1.1.0",
+  "description": "🦮Vue3 query builder/filter builder ui component for building complex queries and filters with nested conditionals.Supports filtering of multiple data types, including string, number, dropdown, cascade, region, date and time(Vue 高级筛选器组件)",
   "files": [
     "dist"
   ],
