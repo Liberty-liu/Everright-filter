@@ -5,7 +5,7 @@ import hooks from '@ER/hooks'
 import NAME from '@ER/filter/name.js'
 export default {
   name: NAME.DayHourComponent,
-  inheritAttrs: process.env.NODE_ENV === 'test'
+  inheritAttrs: import.meta.env.MODE === 'test'
 }
 </script>
 <script setup>

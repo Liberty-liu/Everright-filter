@@ -1,5 +1,5 @@
-import './style/index.js'
 import EverrightFilter from './index.vue'
+import './style/index.js'
 export {
   EverrightFilter
 }

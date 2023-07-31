@@ -1,6 +1,6 @@
 {
   "name": "everright-filter",
-  "version": "1.0.0",
+  "version": "1.1.0-beta.1",
   "description": "🦮Vue3 query builder/filter builder ui component for building complex queries and filters with nested conditionals|Vue 高级筛选器组件",
   "files": [
     "dist"
@@ -24,20 +24,25 @@
     "url": "https://github.com/Liberty-liu/Everright-filter.git"
   },
   "type": "module",
-  "main": "./dist/Everright-filter.umd.cjs",
-  "module": "./dist/Everright-filter.js",
-  "style": "./dist/style.css",
+  "main": "./dist/EverrightFilter-without-element-plus.umd.cjs",
+  "module": "./dist/EverrightFilter-without-element-plus.js",
+  "style": "./dist/EverrightFilter-without-element-plus.css",
   "exports": {
     ".": {
-      "import": "./dist/Everright-filter.js",
-      "require": "./dist/Everright-filter.umd.cjs"
+      "import": "./dist/EverrightFilter-without-element-plus.js",
+      "require": "./dist/EverrightFilter-without-element-plus.umd.cjs"
     },
-    "./dist/style.css": "./dist/style.css"
+    "./dist/style.css": "./dist/EverrightFilter-without-element-plus.css",
+    "./dist/*": "./dist/*"
   },
+  "unpkg": "dist/EverrightFilter-with-element-plus.iife.js",
   "scripts": {
     "dev:server": "nodemon server --watch server",
     "dev": "vite --host 0.0.0.0 --port 5174",
-    "build": "vite build",
+    "build": "pnpm run clean:dist && pnpm run build:without-element-plus && pnpm run build:with-element-plus",
+    "clean:dist": "rimraf dist",
+    "build:without-element-plus": "FORMATS='without-element-plus' vite build",
+    "build:with-element-plus": "FORMATS='with-element-plus' vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext .js,.jsx,.vue",
     "lint-fix": "eslint --fix . --ext .js,.jsx,.vue",
@@ -82,7 +87,9 @@
     "jsdom": "^22.1.0",
     "lint-staged": "^13.1.2",
     "nodemon": "^2.0.20",
+    "rimraf": "^5.0.1",
     "sass": "^1.58.3",
+    "unplugin-vue-components": "^0.25.1",
     "vite": "^3.2.5",
     "vite-plugin-eslint": "^1.8.1",
     "vitest": "^0.33.0",
