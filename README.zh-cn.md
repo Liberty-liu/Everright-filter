@@ -44,6 +44,34 @@ In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) 
 | IIFE | EverrightFilter-without-element-plus.iife.js | EverrightFilter-with-element-plus.iife.js |
 | css | EverrightFilter-without-element-plus.css | EverrightFilter-with-element-plus.css |
 
+<details>
+  <summary>点击查看element-plus哪些组件被包含其中</summary>
+
+#### Includes element-plus(v2.3.3)
+| element-plus components |
+|------------------|
+| ElButton         |
+| ElCascader       |
+| ElCheckbox       |
+| ElCheckboxGroup  |
+| ElDatePicker     |
+| ElIcon           |
+| ElInput          |
+| ElInputNumber    |
+| ElOption         |
+| ElPopover        |
+| ElScrollbar      |
+| ElSelect         |
+| ElSwitch         |
+| ElTabPane        |
+| ElTabs           |
+| ElTag            |
+| ElTimePicker     |
+| ElTooltip        |
+| vLoading         |
+
+</details>
+
 ## Docs
 
 + [Get Started](https://everright.site/filter/started.html)
