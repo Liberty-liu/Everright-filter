@@ -83,6 +83,7 @@ In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) 
 + [matrix](https://everright.site/demo/filter/matrix.html?lang=en) `Application Scenario: Suitable for data filtering`
 + [quick-search](https://everright.site/demo/filter/quick-search.html?lang=en) `Application Scenario: Suitable for search`
 + [quick-filter](https://everright.site/demo/filter/quick-filter.html?lang=en) `Application Scenario: Suitable for filtering in a column of the list`
++ [See examples on codepen](https://codepen.io/liberty-liu/pen/BaGvrjx) `linear、matrix`
 
 ## Sample screenshot
 
