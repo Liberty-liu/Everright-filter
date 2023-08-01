@@ -83,6 +83,7 @@ In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) 
 + [matrix](https://everright.site/demo/filter/matrix.html?lang=zh-cn) `应用场景: 适用于数据筛选`
 + [quick-search](https://everright.site/demo/filter/quick-search.html?lang=zh-cn) `应用场景: 适用于搜索`
 + [quick-filter](https://everright.site/demo/filter/quick-filter.html?lang=zh-cn) `应用场景: 适用于在列表某一列筛选`
++ [See examples on codepen](https://codepen.io/liberty-liu/pen/BaGvrjx) `linear、matrix`
 
 ## Sample screenshot
 
