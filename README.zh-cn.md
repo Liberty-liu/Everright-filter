@@ -48,6 +48,9 @@ In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) 
   <summary>点击查看element-plus哪些组件被包含其中</summary>
 
 #### Includes element-plus(v2.3.3)
+
+基于 ES modules 的 tree shaking
+
 | element-plus components |
 |------------------|
 | ElButton         |
