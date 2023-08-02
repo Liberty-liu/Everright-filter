@@ -48,6 +48,9 @@ In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) 
   <summary>Click Me to see which components are built in</summary>
 
 #### Includes element-plus(v2.3.3)
+
+Based on ES modules tree shaking
+
 | element-plus components |
 |------------------|
 | ElButton         |
