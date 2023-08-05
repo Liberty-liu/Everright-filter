@@ -35,7 +35,10 @@ Everright-filter是一个通过用户界面轻松生成任何类型的查询语�
 * 8.支持中文和英文
 
 ## Explanation of the different builds
-In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) of the npm package you will find the different builds
+在 [npm 包的 dist 目录](https://unpkg.com/browse/everright-filter@1.1.0/dist/)会找到两种构建版本
+
+- `without-element-plus`(需提供element-plus) `Default`
+- `with-element-plus`(内置element-plus)
 
 |   | Excludes element-plus(default)  | Includes element-plus(v2.3.3) |
 | ------------- | ------------- | ------------- |
