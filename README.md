@@ -37,6 +37,9 @@ Everright-filter is a user interface that easily generates any type of query sta
 ## Explanation of the different builds
 In the [dist/ directory](https://unpkg.com/browse/everright-filter@1.1.0/dist/) of the npm package you will find the different builds
 
+- `without-element-plus`(element-plus is required) `Default`
+- `with-element-plus`(Built-in element-plus)
+
 |   | Excludes element-plus(default)  | Includes element-plus(v2.3.3) |
 | ------------- | ------------- | ------------- |
 | UMD | EverrightFilter-without-element-plus.umd.cjs | EverrightFilter-with-element-plus.umd.cjs |
