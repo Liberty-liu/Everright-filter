@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 提问
+    url: https://github.com/Liberty-liu/Everright-filter/discussions
+    about: 讨论关于Everright-filter的使用问题
+  - name: Ask a question
+    url: https://github.com/Liberty-liu/Everright-filter/discussions
+    about: Ask a question about Everright-filter
