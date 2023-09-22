@@ -44,6 +44,9 @@ export default defineConfig(({ command, mode }) => {
       setupFiles: ['./vitest.setup.js'],
       transformMode: {
         web: [/\.[jt]sx$/]
+      },
+      deps: {
+        inline: ['element-plus']
       }
     },
     base: './',
